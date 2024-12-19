@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[customer]
+﻿CREATE TABLE [dbo].[Customer]
 (
 	CustomerID CHAR(10) NOT NULL PRIMARY KEY,
 	CustomerName VARCHAR(30) NOT NULL,
