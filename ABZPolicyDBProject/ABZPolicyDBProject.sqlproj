@@ -57,4 +57,9 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Proposal.sql" />
+    <Build Include="Policy.sql" />
+    <Build Include="PolicyAddon.sql" />
+  </ItemGroup>
 </Project>
