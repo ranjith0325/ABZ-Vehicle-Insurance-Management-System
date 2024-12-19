@@ -25,11 +25,11 @@ public partial class Proposal
 
     public decimal? TotalAmount { get; set; }
 
-    public virtual Agent Agent { get; set; } = null!;
+    public virtual Agent? Agent { get; set; } = null!;
 
-    public virtual Customer Customer { get; set; } = null!;
+    public virtual Customer? Customer { get; set; } = null!;
 
-    public virtual Product Product { get; set; } = null!;
+    public virtual Product? Product { get; set; } = null!;
 
-    public virtual Vehicle RegNoNavigation { get; set; } = null!;
+    public virtual Vehicle? RegNoNavigation { get; set; } = null!;
 }
