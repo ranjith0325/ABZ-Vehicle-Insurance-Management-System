@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZVehicleDBProject", "ABZVehicleDBProject\ABZVehicleDBProject.sqlproj", "{AE478190-B09D-408E-94C5-E55DC02ADAE0}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZProposalDBProject", "ABZProposalDBProject\ABZProposalDBProject.sqlproj", "{FD1BB71E-0545-4480-B344-4A77F80A8FA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,12 @@ Global
 		{AE478190-B09D-408E-94C5-E55DC02ADAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE478190-B09D-408E-94C5-E55DC02ADAE0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AE478190-B09D-408E-94C5-E55DC02ADAE0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
