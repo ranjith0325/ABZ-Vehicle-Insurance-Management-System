@@ -1,4 +1,6 @@
 
+using ABZVehicleLibrary.Repos;
+
 namespace ABZVehicleWebApi
 {
     public class Program
@@ -13,6 +15,7 @@ namespace ABZVehicleWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IVehicleRepoAsync, EFVehicleRepoAsync>();
 
             var app = builder.Build();
 
