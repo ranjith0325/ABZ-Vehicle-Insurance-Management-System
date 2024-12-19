@@ -35,5 +35,5 @@ public partial class Vehicle
 
     public string OwnerId { get; set; } = null!;
 
-    public virtual Customer Owner { get; set; } = null!;
+    public virtual Customer? Owner { get; set; } = null!;
 }

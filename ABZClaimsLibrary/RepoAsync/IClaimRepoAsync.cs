@@ -13,7 +13,7 @@ namespace ABZClaimsLibrary.RepoAsync
         Task UpdateClaimAsync(string claimNo,Claim claim);
         Task DeleteClaimAsync(string claimNo);
         Task<Claim> GetClaimByNoAsync(string claimNo);
-        Task<Claim> GetClaimsByPolicyNoAsync(string policyNo);
-        Task<List<Claim>> GetAllClaimAsync(string claimNo);
+        Task<List<Claim>> GetClaimsByPolicyNoAsync(string policyNo);
+        Task<List<Claim>> GetAllClaimAsync();
     }
 }
