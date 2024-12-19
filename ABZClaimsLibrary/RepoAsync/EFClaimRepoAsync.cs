@@ -20,7 +20,7 @@ namespace ABZClaimsLibrary.RepoAsync
             await ctx.SaveChangesAsync();
         }
 
-        public async Task<List<Claim>> GetAllClaimAsync(string claimNo)
+        public async Task<List<Claim>> GetAllClaimAsync()
         {
             List<Claim> claims = await ctx.Claims.ToListAsync();
             return claims;
@@ -48,22 +48,17 @@ namespace ABZClaimsLibrary.RepoAsync
             }
         }
 
-        public async Task<Claim> GetClaimsByPolicyNoAsync(string policyNo)
+        public async Task<List<Claim>> GetClaimsByPolicyNoAsync(string policyNo)
         {
-            try
-            {
-                Claim claim = await (from c in ctx.Claims
-                                     where c.PolicyNo == policyNo
-                                     select c).FirstAsync();
-                return claim;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            List<Claim> claims = await (from c in ctx.Claims
+                                        where c.PolicyNo == policyNo
+                                        select c).ToListAsync();
+            if (claims.Count == 0)
+                throw new Exception("No such customer id");
+            else
+                return claims;
+           
         }
-
-        
 
         public async Task InsertClaimAsync(Claim claim)
         {
@@ -75,9 +70,15 @@ namespace ABZClaimsLibrary.RepoAsync
         {
             Claim claim1 = await GetClaimByNoAsync(claimNo);
             claim1.ClaimAmount = claim.ClaimAmount;
-            claim1.ClaimNo = claim.ClaimNo;
             claim1.ClaimDate = claim.ClaimDate;
             claim1.ClaimStatus = claim.ClaimStatus;
+            claim1.IncidentDate = claim.IncidentDate;
+            claim1.IncidentLocation = claim.IncidentLocation;
+            claim1.IncidentDescription = claim.IncidentDescription;
+            claim1.SurveyorName = claim.SurveyorName;
+            claim1.SurveyorPhone = claim.SurveyorPhone;
+            claim1.SurveyDate = claim.SurveyDate;
+            claim1.SurveyDescription = claim.SurveyDescription;
             await ctx.SaveChangesAsync();
         }
     }

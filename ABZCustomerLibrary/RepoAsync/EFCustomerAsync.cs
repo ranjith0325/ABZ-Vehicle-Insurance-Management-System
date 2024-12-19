@@ -49,6 +49,7 @@ namespace ABZCustomerLibrary.RepoAsync
             custedit.CustomerPhone= customer.CustomerPhone;
             custedit.CustomerName= customer.CustomerName;
             custedit.CustomerEmail= customer.CustomerEmail;
+            custedit.CustomerAddress= customer.CustomerAddress;
             await ctx.SaveChangesAsync();
         }
     }
