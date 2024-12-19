@@ -1,4 +1,6 @@
 
+using ABZCustomerLibrary.RepoAsync;
+
 namespace ABZCustomerWebApi
 {
     public class Program
@@ -13,6 +15,7 @@ namespace ABZCustomerWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<ICustomerRepoAsync, EFCustomerAsync>();
 
             var app = builder.Build();
 
