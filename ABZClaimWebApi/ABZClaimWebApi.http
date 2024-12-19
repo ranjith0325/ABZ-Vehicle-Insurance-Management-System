@@ -1,0 +1,6 @@
+@ABZClaimWebApi_HostAddress = http://localhost:5189
+
+GET {{ABZClaimWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

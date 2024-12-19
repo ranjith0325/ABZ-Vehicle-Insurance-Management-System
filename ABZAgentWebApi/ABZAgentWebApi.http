@@ -1,0 +1,6 @@
+@ABZAgentWebApi_HostAddress = http://localhost:5147
+
+GET {{ABZAgentWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

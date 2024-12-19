@@ -1,0 +1,6 @@
+@ABZVehicleWebApi_HostAddress = http://localhost:5083
+
+GET {{ABZVehicleWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
