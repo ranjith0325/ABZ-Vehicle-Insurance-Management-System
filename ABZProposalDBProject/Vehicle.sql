@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Vehicle]
+(
+	RegNO CHAR(10) NOT NULL PRIMARY KEY
+)
