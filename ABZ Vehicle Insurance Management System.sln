@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZAgentLibrary", "ABZAgent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZCustomerLibrary", "ABZCustomerLibrary\ABZCustomerLibrary.csproj", "{5C2D56B0-5FFC-4E76-B75B-74FA4842BFDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZClaimsLibrary", "ABZClaimsLibrary\ABZClaimsLibrary.csproj", "{BCE6E85E-A446-4A20-AE0C-EED578CCEEA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZClaimLibrary", "ABZClaimsLibrary\ABZClaimLibrary.csproj", "{BCE6E85E-A446-4A20-AE0C-EED578CCEEA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZPolicyLibrary", "ABZPolicyLibrary\ABZPolicyLibrary.csproj", "{82FEAF18-ED2C-4332-8311-7AC1BDF53844}"
 EndProject
