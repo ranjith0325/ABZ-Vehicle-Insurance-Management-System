@@ -17,8 +17,9 @@ namespace ABZProductWebApi.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            List<Product> products = await proRepo.GetAllProductAsync();
+            List<Product> products = await proRepo.GetAllProductsAsync();
             return Ok(products);
         }
+
     }
 }
