@@ -1,4 +1,6 @@
 
+using ABZProposalLibrary.RepoAsync;
+
 namespace ABZProposalWebApi
 {
     public class Program
@@ -13,6 +15,7 @@ namespace ABZProposalWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IProposalRepoAsync, EFProposalRepoAsync>();
 
             var app = builder.Build();
 

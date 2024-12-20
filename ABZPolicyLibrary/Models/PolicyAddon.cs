@@ -11,5 +11,5 @@ public partial class PolicyAddon
 
     public decimal? Amount { get; set; }
 
-    public virtual Policy PolicyNoNavigation { get; set; } = null!;
+    public virtual Policy? PolicyNoNavigation { get; set; } = null!;
 }

@@ -1,4 +1,6 @@
 
+using ABZAgentLibrary.Repos;
+
 namespace ABZAgentWebApi
 {
     public class Program
@@ -13,6 +15,7 @@ namespace ABZAgentWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IAgentRepoAsync,EFAgentRepoAsync>();
 
             var app = builder.Build();
 

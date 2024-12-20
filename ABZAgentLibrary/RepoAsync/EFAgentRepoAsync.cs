@@ -14,6 +14,7 @@ namespace ABZAgentLibrary.Repos
         public async Task DeleteAgentAsync(string agentId)
         {
             Agent agent = await GetAgentByIDAsync(agentId);
+            ctx.Agents.Remove(agent);
             await ctx.SaveChangesAsync();
         }
 

@@ -1,4 +1,6 @@
 
+using ABZClaimsLibrary.RepoAsync;
+
 namespace ABZClaimWebApi
 {
     public class Program
@@ -13,6 +15,7 @@ namespace ABZClaimWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IClaimRepoAsync, EFClaimRepoAsync>();
 
             var app = builder.Build();
 

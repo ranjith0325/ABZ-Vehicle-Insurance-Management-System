@@ -29,5 +29,5 @@ public partial class Claim
 
     public string ClaimStatus { get; set; } = null!;
 
-    public virtual Policy PolicyNoNavigation { get; set; } = null!;
+    public virtual Policy? PolicyNoNavigation { get; set; } = null!;
 }

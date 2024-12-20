@@ -1,4 +1,5 @@
-
+using ABZPolicyLibrary.Models;
+using ABZPolicyLibrary.Repos;
 namespace ABZPolicyWebApi
 {
     public class Program
@@ -13,6 +14,9 @@ namespace ABZPolicyWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IPolicyRepoAsync, EFPolicyRepoAsync>();
+            builder.Services.AddScoped<IPolicyAddonRepoAsync, EFPolicyAddonRepoAsync>(); 
+            
 
             var app = builder.Build();
 
