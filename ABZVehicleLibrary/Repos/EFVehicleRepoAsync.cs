@@ -43,6 +43,13 @@ namespace ABZVehicleLibrary.Repos
             else
                 return vehicles;
         }
+
+        public async Task InsertCustomerAsync(Customer customer)
+        {
+            await ctx.Customers.AddAsync(customer);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task InsertVehicleAsync(Vehicle vehicle)
         {
             await ctx.Vehicles.AddAsync(vehicle);

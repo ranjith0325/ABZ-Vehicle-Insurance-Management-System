@@ -40,7 +40,7 @@ namespace ABZCustomerWebApi.Controllers
             {
                 await custRepo.InsertCustomerAsync(customer);
               //HttpClient client = new HttpClient();
-              // await client.PostAsJsonAsync("", new {customerId=customer.CustomerID});
+              //await client.PostAsJsonAsync("", new {customerId=customer.CustomerID});
                 return Created($"api/Customer/{customer.CustomerID}", customer);
                 
             }
