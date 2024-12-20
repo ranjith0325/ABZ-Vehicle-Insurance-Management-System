@@ -23,6 +23,5 @@ namespace ABZProposalLibrary.RepoAsync
         Task InsertCustomerAsync(Customer customer);
         Task InsertProductAsync(Product product);
         Task InsertVehicleAsync(Vehicle vehicle);
-
     }
 }

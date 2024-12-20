@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ABZCustomerLibrary.Models;
 using ABZCustomerLibrary.RepoAsync;
+using System.Net.Http.Json;
 
 namespace ABZCustomerWebApi.Controllers
 {
@@ -41,6 +42,7 @@ namespace ABZCustomerWebApi.Controllers
                 await custRepo.InsertCustomerAsync(customer);
                 HttpClient client = new HttpClient();
                 await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer", new {CustomerId=customer.CustomerID});
+                await client.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer",new { CustomerId = customer.CustomerID });
                 return Created($"api/Customer/{customer.CustomerID}", customer);
                 
             }
