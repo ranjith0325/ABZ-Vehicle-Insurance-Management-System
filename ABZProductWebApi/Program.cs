@@ -1,4 +1,6 @@
 
+using ABZProductLibrary.Repos;
+
 namespace ABZProductWebApi
 {
     public class Program
@@ -13,6 +15,7 @@ namespace ABZProductWebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IProductRepoAsync, EFProductRepoAsync>();
 
             var app = builder.Build();
 
