@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ABZProductLibrary.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ABZProductLibrary.Repos
 {
@@ -12,7 +13,8 @@ namespace ABZProductLibrary.Repos
         ABZProductDBContext ctx=new ABZProductDBContext();
         public async Task DeleteProductAsync(string productID)
         {
-            await ctx.Products.Remove(productID);
+            Product product = await GetProductAsync(productID);
+            ctx.Products.Remove(product);
             await ctx.SaveChangesAsync();
         }
 
@@ -21,9 +23,18 @@ namespace ABZProductLibrary.Repos
             throw new NotImplementedException();
         }
 
-        public Task<Product> GetProductAsync(string ProductID)
+        public async Task<Product> GetProductAsync(string ProductID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Product product = await (from pro in ctx.Products where ProductID == pro.ProductID select pro).FirstAsync();
+                return product;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public Task InsertProductAsync(Product product)
