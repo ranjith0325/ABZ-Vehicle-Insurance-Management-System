@@ -39,8 +39,8 @@ namespace ABZClaimWebApi.Controllers
             await claimRepo.InsertPolicyAsync(policy);
             return Created();
         }
-        [HttpPost("{token}")]
-        public async Task<ActionResult> Insert(string token,Claim claim)
+        [HttpPost]
+        public async Task<ActionResult> Insert(Claim claim)
         {
             try
             {
