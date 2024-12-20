@@ -65,7 +65,7 @@ namespace ABZProposalWebApi.Controllers
             try
             {
                 await proRepo.InsertProposalAsync(proposal);
-                return Created($"api/Proposal/{proposal.ProposalID}",proposal);
+                return Created($"api/Proposal/{proposal.ProposalNo}",proposal);
             }
             catch (Exception ex)
             {

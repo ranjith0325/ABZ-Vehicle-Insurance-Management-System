@@ -12,7 +12,7 @@ namespace ABZProposalLibrary.RepoAsync
         Task InsertProposalAsync(Proposal proposal);
         Task UpdateProposalAsync(string proposalId,Proposal proposal);
         Task DeleteProposalAsync(string proposalId);
-        Task<Proposal> GetProposalByIdAsync(string proposalId);
+        Task<Proposal> GetProposalByIdAsync(string proposalNo);
         Task<List<Proposal>> GetProposalByAgentAsync(string agentId);
         Task<List<Proposal>> GetProposalByCustomerAsync(string customerId);
         Task<List<Proposal>> GetProposalByProductAsync(string productId);
