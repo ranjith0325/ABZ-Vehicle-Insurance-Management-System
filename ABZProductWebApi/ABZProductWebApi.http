@@ -1,6 +1,18 @@
 @ABZProductWebApi_HostAddress = http://localhost:5145
 
-GET {{ABZProductWebApi_HostAddress}}/weatherforecast/
+GET {{ABZProductWebApi_HostAddress}}/api/Product
 Accept: application/json
 
 ###
+###
+POST {{ABZProductWebApi_HostAddress}}/api/Product
+Content-Type: application/json
+{
+  "productID": "P123456789",
+  "productName": "string",
+  "productDescription": "string",
+  "productUIN": "string",
+  "insuredInterests": "PRIVATE CAR",
+  "policyCoverage": "string"
+}
+

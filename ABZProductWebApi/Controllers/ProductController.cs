@@ -7,6 +7,7 @@ namespace ABZProductWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ProductController : ControllerBase
     {
         IProductRepoAsync proRepo;
@@ -17,8 +18,69 @@ namespace ABZProductWebApi.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            List<Product> products = await proRepo.GetAllProductAsync();
+            List<Product> products = await proRepo.GetAllProductsAsync();
             return Ok(products);
         }
+        [HttpGet("{productID}")]
+        public async Task<ActionResult> GetOne(string productID)
+        {
+            try
+            {
+                Product product = await proRepo.GetProductAsync(productID);
+                return Ok(product);
+
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> Insert(Product product)
+        {
+            try
+            {
+                await proRepo.InsertProductAsync(product);
+                HttpClient client = new HttpClient();
+                //await client.PostAsJsonAsync("http://localhost:5189/api/Claim/Policy", new { ProductID = product.ProductID });
+                return Created($"api/Product/{product.ProductID}", product);
+
+            }
+            catch (Exception ex)
+            {
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+           
+        }
+        [HttpPut("{productID}")]
+        public async Task<ActionResult> Update(string productID, Product product)
+        {
+            try
+            {
+                await proRepo.UpdateProductAsync(productID, product);
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete("{productID}")]
+        public async Task<ActionResult> Delete(string productID)
+        {
+            try
+            {
+                await proRepo.DeleteProductAsync(productID);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
