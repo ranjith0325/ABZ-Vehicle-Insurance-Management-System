@@ -33,6 +33,12 @@ namespace ABZClaimWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpPost("Policy")]
+        public async Task<ActionResult> InsertPolicy(Policy policy)
+        {
+            await claimRepo.InsertPolicyAsync(policy);
+            return Created();
+        }
         [HttpPost("{token}")]
         public async Task<ActionResult> Insert(string token,Claim claim)
         {

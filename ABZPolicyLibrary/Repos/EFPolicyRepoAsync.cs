@@ -44,7 +44,7 @@ namespace ABZPolicyLibrary.Repos
 
         }
 
-        public async Task InsertProposal(Proposal proposal)
+        public async Task InsertProposalAsync(Proposal proposal)
         {
             await ctx.Proposals.AddAsync(proposal);
             await ctx.SaveChangesAsync();

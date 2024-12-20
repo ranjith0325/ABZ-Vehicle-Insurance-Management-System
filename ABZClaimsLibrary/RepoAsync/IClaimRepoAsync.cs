@@ -15,6 +15,6 @@ namespace ABZClaimsLibrary.RepoAsync
         Task<Claim> GetClaimByNoAsync(string claimNo);
         Task<List<Claim>> GetClaimsByPolicyNoAsync(string policyNo);
         Task<List<Claim>> GetAllClaimAsync();
-        Task InsertPolicy(Policy policy);
+        Task InsertPolicyAsync(Policy policy);
     }
 }

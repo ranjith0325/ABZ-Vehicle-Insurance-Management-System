@@ -8,26 +8,24 @@ GET {{ABZPolicyWebApi_HostAddress}}/api/policy/
 Content-Type: application/json
 {
   "policyNo": "12345678UT",
-  "prososalNo": "12345678SR",
+  "proposalNo": "P1234",
   "noClaimBonus": 100,
   "receiptNo": "12345",
   "receiptDate": "2024-12-19T10:15:47.247Z",
   "paymentMode": "C",
   "amount": 500
-  
 }
 ###
-POST {{ABZPolicyWebApi_HostAddress}}/api/policy/
+POST {{ABZPolicyWebApi_HostAddress}}/api/policy
 Content-Type: application/json
 {
-  "policyNo": "12345678UA",
-  "prososalNo": "12345678SR",
-  "noClaimBonus": 100,
-  "receiptNo": "12345",
-  "receiptDate": "2024-12-19T10:15:47.247Z",
-  "paymentMode": "C",
-  "amount": 500
-  
+  "policyNo": "P123456567",
+  "proposalNo": null,
+  "noClaimBonus": 0,
+  "receiptNo": "string",
+  "receiptDate": "2024-12-20T10:05:55.258Z",
+  "paymentMode": "U",
+  "amount": 0
 }
 ###
 GET {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UI
@@ -56,7 +54,7 @@ POST {{ABZPolicyWebApi_HostAddress}}/api/policyAddon
 Content-Type: application/json
 {
   "addonID": "Add3",
-  "policyNo": "12345678UI",
+  "policyNo": "POL1234567",
   "amount": 100
 }
 ###
