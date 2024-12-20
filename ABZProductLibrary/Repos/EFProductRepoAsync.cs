@@ -18,9 +18,10 @@ namespace ABZProductLibrary.Repos
             await ctx.SaveChangesAsync();
         }
 
-        public Task<List<Product>> GetAllProductsAsync()
+        public async Task<List<Product>> GetAllProductsAsync()
         {
-            throw new NotImplementedException();
+            List<Product> products=await ctx.Products.ToListAsync();
+            return products;
         }
 
         public async Task<Product> GetProductAsync(string ProductID)
@@ -37,14 +38,23 @@ namespace ABZProductLibrary.Repos
             }
         }
 
-        public Task InsertProductAsync(Product product)
+        public async Task InsertProductAsync(Product product)
         {
-            throw new NotImplementedException();
+            await ctx.Products.AddAsync(product);
+            await ctx.SaveChangesAsync();
         }
 
-        public Task UpdateProductAsync(string productID, Product product)
+        public async Task UpdateProductAsync(string productID, Product product)
         {
-            throw new NotImplementedException();
+            Product product1=await GetProductAsync(productID);
+            product1.ProductUIN=product.ProductUIN;
+            product1.ProductName=product.ProductName;
+            product1.ProductDescription=product.ProductDescription;
+            product1.InsuredInterests=product.InsuredInterests;
+            product1.PolicyCoverage=product.PolicyCoverage;
+            ctx.SaveChangesAsync();
+
+
         }
     }
 }
