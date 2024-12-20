@@ -92,7 +92,7 @@ namespace ABZProposalWebApi.Controllers
             await proRepo.InsertProductAsync(product);
             return Created();
         }
-        [HttpPost("vehicleId")]
+        [HttpPost("Vehicle")]
         public async Task<ActionResult> InsertVehicleAsync(Vehicle vehicle)
         {
             await proRepo.InsertVehicleAsync(vehicle);
