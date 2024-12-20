@@ -37,9 +37,9 @@ namespace ABZProposalLibrary.RepoAsync
             return proposals;
         }
 
-        public async Task<Proposal> GetProposalByIdAsync(string proposalId)
+        public async Task<Proposal> GetProposalByIdAsync(string proposalNo)
         {
-            Proposal proposals = await (from pro in ctx.Proposals where pro.ProposalNo==proposalId select pro).FirstAsync();
+            Proposal proposals = await (from pro in ctx.Proposals where pro.ProposalNo==proposalNo select pro).FirstAsync();
             return proposals;
         }
 
