@@ -71,6 +71,12 @@ namespace ABZClaimsLibrary.RepoAsync
             await ctx.SaveChangesAsync();
         }
 
+        public async Task InsertPolicy(Policy policy)
+        {
+            await ctx.Policies.AddAsync(policy);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task UpdateClaimAsync(string claimNo,Claim claim)
         {
             Claim claim1 = await GetClaimByNoAsync(claimNo);

@@ -14,5 +14,6 @@ namespace ABZPolicyLibrary.Repos
         Task UpdatePolicyAsync(string policyNo,Policy policy);
         Task<List<Policy>> GetAllPoliciesAsync();
         Task<Policy> GetPolicyAsync(string policyNo);
+        Task InsertProposal(Proposal proposal); 
     }
 }
