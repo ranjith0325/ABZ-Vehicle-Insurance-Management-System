@@ -43,7 +43,7 @@ public partial class ABZPolicyDBContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .IsFixedLength();
-            entity.Property(e => e.PrososalNo)
+            entity.Property(e => e.ProposalNo)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .IsFixedLength();
@@ -54,7 +54,7 @@ public partial class ABZPolicyDBContext : DbContext
                 .IsFixedLength();
 
             entity.HasOne(d => d.PrososalNoNavigation).WithMany(p => p.Policies)
-                .HasForeignKey(d => d.PrososalNo)
+                .HasForeignKey(d => d.ProposalNo)
                 .HasConstraintName("FK__Policy__Prososal__3A81B327");
         });
 

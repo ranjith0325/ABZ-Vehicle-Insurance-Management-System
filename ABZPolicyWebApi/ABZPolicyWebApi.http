@@ -17,7 +17,7 @@ Content-Type: application/json
   
 }
 ###
-POST {{ABZPolicyWebApi_HostAddress}}/api/policy/
+POST {{ABZPolicyWebApi_HostAddress}}/api/policy
 Content-Type: application/json
 {
   "policyNo": "12345678UA",
