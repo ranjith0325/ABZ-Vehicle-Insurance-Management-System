@@ -74,19 +74,19 @@ namespace ABZProposalWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("agentId")]
+        [HttpPost("Agent")]
         public async Task<ActionResult> InsertAgentAsync(Agent agent)
         {
             await proRepo.InsertAgentAsync(agent);
             return Created();
         }
-        [HttpPost("customerId")]
+        [HttpPost("Customer")]
         public async Task<ActionResult> InsertCustomerAsync(Customer customer)
         {
             await proRepo.InsertCustomerAsync(customer);
             return Created();
         }
-        [HttpPost("productId")]
+        [HttpPost("Product")]
         public async Task<ActionResult> InsertProductAsync(Product product)
         {
             await proRepo.InsertProductAsync(product);
