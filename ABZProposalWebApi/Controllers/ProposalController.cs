@@ -20,12 +20,12 @@ namespace ABZProposalWebApi.Controllers
             List<Proposal> proposals = await proRepo.GetAllProposalsAsync();
             return Ok(proposals);
         }
-        [HttpGet("{proposalId}")]
-        public async Task<ActionResult> GetOne(string proposalId)
+        [HttpGet("{proposalNo}")]
+        public async Task<ActionResult> GetOne(string proposalNo)
         {
             try
             {
-                Proposal prop = await proRepo.GetProposalByIdAsync(proposalId);
+                Proposal prop = await proRepo.GetProposalByIdAsync(proposalNo);
                 return Ok();
             }
             catch (Exception ex)
@@ -33,12 +33,12 @@ namespace ABZProposalWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpPut("{proposalId}")]
-        public async Task<ActionResult> Update(string proposalId, Proposal proposal)
+        [HttpPut("{proposalNo}")]
+        public async Task<ActionResult> Update(string proposalNo, Proposal proposal)
         {
             try
             {
-                await proRepo.UpdateProposalAsync(proposalId, proposal);
+                await proRepo.UpdateProposalAsync(proposalNo, proposal);
                 return Ok(proposal);
             }
             catch (Exception ex)
@@ -46,12 +46,12 @@ namespace ABZProposalWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("{proposalId}")]
-        public async Task<ActionResult> Delete(string proposalId)
+        [HttpDelete("{proposalNo}")]
+        public async Task<ActionResult> Delete(string proposalNo)
         {
             try
             {
-                await proRepo.DeleteProposalAsync(proposalId);
+                await proRepo.DeleteProposalAsync(proposalNo);
                 return Ok();
             }
             catch (Exception ex)
@@ -72,6 +72,31 @@ namespace ABZProposalWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("agentId")]
+        public async Task<ActionResult> InsertAgentAsync(Agent agent)
+        {
+            await proRepo.InsertAgentAsync(agent);
+            return Created();
+        }
+        [HttpPost("customerId")]
+        public async Task<ActionResult> InsertCustomerAsync(Customer customer)
+        {
+            await proRepo.InsertCustomerAsync(customer);
+            return Created();
+        }
+        [HttpPost("productId")]
+        public async Task<ActionResult> InsertProductAsync(Product product)
+        {
+            await proRepo.InsertProductAsync(product);
+            return Created();
+        }
+        [HttpPost("vehicleId")]
+        public async Task<ActionResult> InsertVehicleAsync(Vehicle vehicle)
+        {
+            await proRepo.InsertVehicleAsync(vehicle);
+            return Created();
+        }
+
         [HttpGet("ByVehicle{regNo}")]
         public async Task<ActionResult> GetByVehicle(string regNo)
         {
