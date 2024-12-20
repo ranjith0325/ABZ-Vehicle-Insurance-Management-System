@@ -5,7 +5,7 @@ Accept: application/json
 
 
 ###
-POST {{ABZClaimWebApi_HostAddress}}/api/Claim/bce
+POST {{ABZClaimWebApi_HostAddress}}/api/Claim/
 Content-Type:application/json
 {
   "claimNo": "CL4",
