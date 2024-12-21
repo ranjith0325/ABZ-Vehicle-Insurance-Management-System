@@ -34,8 +34,8 @@ namespace ABZCustomerWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpPost("{token}")]
-        public async Task<ActionResult> Insert(string token,Customer customer)
+        [HttpPost]
+        public async Task<ActionResult> Insert(Customer customer)
         {
             try
             {
