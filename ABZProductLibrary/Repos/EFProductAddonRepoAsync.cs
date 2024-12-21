@@ -37,6 +37,20 @@ namespace ABZProductLibrary.Repos
             }
         }
 
+        public async Task<List<ProductAddon>> GetProductAddonByProductAsync(string productId)
+        {
+            List<ProductAddon> productAddons=await (from p in ctx.ProductAddons where productId==p.ProductID select p).ToListAsync();
+            if (productAddons.Count == 0)
+            {
+                throw new Exception("No Such Product");
+            }
+            else
+            {
+                return productAddons;
+            }
+
+        }
+
         public async Task InsertProductAddonAsync(ProductAddon productAddon)
         {
             await ctx.ProductAddons.AddAsync(productAddon);
