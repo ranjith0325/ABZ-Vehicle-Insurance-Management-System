@@ -1,4 +1,6 @@
-﻿using ABZProposalLibrary.Models;
+﻿using System.Net.Http;
+using System.Net.Http.Json;
+using ABZProposalLibrary.Models;
 using ABZProposalLibrary.RepoAsync;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -66,7 +68,7 @@ namespace ABZProposalWebApi.Controllers
             {
                 await proRepo.InsertProposalAsync(proposal);
                 HttpClient client = new HttpClient();
-                await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal", new { ProposalNo = proposal.ProposalNo });
+                await client.PostAsJsonAsync("http://localhost:5007/api/policy/proposal", new { proposalno = proposal.ProposalNo });
                 return Created($"api/Proposal/{proposal.ProposalNo}",proposal);
             }
             catch (Exception ex)
