@@ -53,8 +53,8 @@ namespace ABZPolicyWebApi.Controllers
                 }
             }
         }
-        [HttpPost("proposal")]
-        public async Task<ActionResult> InsertCustomer(Proposal proposal)
+        [HttpPost("Proposal")]
+        public async Task<ActionResult> Insert(Proposal proposal)
         {
             await policyRepo.InsertProposalAsync(proposal);
             return Created();

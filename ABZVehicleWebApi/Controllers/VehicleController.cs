@@ -78,7 +78,7 @@ namespace ABZVehicleWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("customer")]
+        [HttpPost("Customer")]
         public async Task<ActionResult> InsertCustomer(Customer customer)
         {
             await vehRepo.InsertCustomerAsync(customer);

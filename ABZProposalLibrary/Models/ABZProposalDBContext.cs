@@ -120,11 +120,11 @@ public partial class ABZProposalDBContext : DbContext
 
         modelBuilder.Entity<Vehicle>(entity =>
         {
-            entity.HasKey(e => e.RegNO).HasName("PK__Vehicle__2C6FF1C8504E8C5B");
+            entity.HasKey(e => e.RegNo).HasName("PK__Vehicle__2C6FF1C8504E8C5B");
 
             entity.ToTable("Vehicle");
 
-            entity.Property(e => e.RegNO)
+            entity.Property(e => e.RegNo)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .IsFixedLength();

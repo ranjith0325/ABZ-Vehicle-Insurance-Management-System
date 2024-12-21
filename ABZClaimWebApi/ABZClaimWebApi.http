@@ -5,12 +5,12 @@ Accept: application/json
 
 
 ###
-POST {{ABZClaimWebApi_HostAddress}}/api/Claim/
+POST {{ABZClaimWebApi_HostAddress}}/api/Claim
 Content-Type:application/json
 {
-  "claimNo": "CL4",
+  "claimNo": "CL5",
   "claimDate": "2024-12-19T09:59:53.448Z",
-  "policyNo": "13",
+  "policyNo": "POL1234567",
   "incidentDate": "2024-12-19T09:59:53.448Z",
   "incidentLocation": "Bang",
   "incidentDescription": "Descriptions",
@@ -24,19 +24,19 @@ Content-Type:application/json
 }
 
 ###
-GET {{ABZClaimWebApi_HostAddress}}/api/Claim/CL1
+GET {{ABZClaimWebApi_HostAddress}}/api/Claim/CL4
 Accept: application/json
 ###
-DELETE {{ABZClaimWebApi_HostAddress}}/api/Claim/CL2
+DELETE {{ABZClaimWebApi_HostAddress}}/api/Claim/CL5
 Accept: application/json
 ###
-PUT {{ABZClaimWebApi_HostAddress}}/api/Claim/CL1
+PUT {{ABZClaimWebApi_HostAddress}}/api/Claim/CL4
 Content-Type:application/json
 {
  
-  "claimNo": "CL1",
+  "claimNo": "CL4",
   "claimDate": "2024-12-19T09:59:53.448Z",
-  "policyNo": "10",
+  "policyNo": "POL1234567",
   "incidentDate": "2024-12-19T09:59:53.448Z",
   "incidentLocation": "Bang1",
   "incidentDescription": "Descriptions",
@@ -44,10 +44,10 @@ Content-Type:application/json
   "surveyorName": "Suresh Reddy",
   "surveyorPhone": "789456123",
   "surveyDate": "2024-12-19T09:59:53.448Z",
-  "surveyDescription": "Hi",
+  "surveyDescription": "Hihdkhgdhgcnc",
   "claimStatus": "S"
 }
 ###
-GET {{ABZClaimWebApi_HostAddress}}/api/Claim/Policy/10
+GET {{ABZClaimWebApi_HostAddress}}/api/Claim/Policy/POL1234567
 Accept: application/json
 ###
