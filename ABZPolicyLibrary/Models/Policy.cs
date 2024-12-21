@@ -21,5 +21,5 @@ public partial class Policy
 
     public virtual ICollection<PolicyAddon> PolicyAddons { get; set; } = new List<PolicyAddon>();
 
-    public virtual Proposal? ProposalNoNavigation { get; set; }
+    public virtual Proposal? PrososalNoNavigation { get; set; }
 }

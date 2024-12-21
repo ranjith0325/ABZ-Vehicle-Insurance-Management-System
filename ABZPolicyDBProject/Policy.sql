@@ -7,4 +7,5 @@
 	ReceiptDate Datetime not null,
 	PaymentMode char(1) check (PaymentMode in ('C','Q','U','D')) not null,
 	Amount money 
+
 )

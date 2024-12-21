@@ -7,8 +7,6 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZVehicleDBProject", "ABZV
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZProposalDBProject", "ABZProposalDBProject\ABZProposalDBProject.sqlproj", "{FD1BB71E-0545-4480-B344-4A77F80A8FA9}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZPolicyDBProject", "ABZPolicyDBProject\ABZPolicyDBProject.sqlproj", "{AF373E13-94FB-48F9-AB9A-E4381304AD73}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZClaimDBProject", "ABZClaimDBProject\ABZClaimDBProject.sqlproj", "{616380EE-6867-43AE-8C58-F49596E38E5D}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZCustomerDBProject", "ABZCustomerDBProject\ABZCustomerDBProject.sqlproj", "{C5B965B6-F834-44B0-AD2F-9237607C0B3F}"
@@ -45,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZProposalWebApi", "ABZPro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZVehicleWebApi", "ABZVehicleWebApi\ABZVehicleWebApi.csproj", "{E7092FB8-3040-4C36-AAA9-83801F941C3E}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZPolicyDBProject", "ABZPolicyDBProject\ABZPolicyDBProject.sqlproj", "{9005622A-A65C-4C8A-B89B-841A5A204C2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,12 +63,6 @@ Global
 		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD1BB71E-0545-4480-B344-4A77F80A8FA9}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{AF373E13-94FB-48F9-AB9A-E4381304AD73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF373E13-94FB-48F9-AB9A-E4381304AD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF373E13-94FB-48F9-AB9A-E4381304AD73}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{AF373E13-94FB-48F9-AB9A-E4381304AD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF373E13-94FB-48F9-AB9A-E4381304AD73}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF373E13-94FB-48F9-AB9A-E4381304AD73}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{616380EE-6867-43AE-8C58-F49596E38E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{616380EE-6867-43AE-8C58-F49596E38E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{616380EE-6867-43AE-8C58-F49596E38E5D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -149,6 +143,12 @@ Global
 		{E7092FB8-3040-4C36-AAA9-83801F941C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7092FB8-3040-4C36-AAA9-83801F941C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7092FB8-3040-4C36-AAA9-83801F941C3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9005622A-A65C-4C8A-B89B-841A5A204C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9005622A-A65C-4C8A-B89B-841A5A204C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9005622A-A65C-4C8A-B89B-841A5A204C2B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9005622A-A65C-4C8A-B89B-841A5A204C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9005622A-A65C-4C8A-B89B-841A5A204C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9005622A-A65C-4C8A-B89B-841A5A204C2B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
