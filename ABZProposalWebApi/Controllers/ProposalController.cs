@@ -65,8 +65,8 @@ namespace ABZProposalWebApi.Controllers
             try
             {
                 await proRepo.InsertProposalAsync(proposal);
-                HttpClient client = new HttpClient();
-                await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal", new { ProposalNo = proposal.ProposalNo });
+                //httpclient client = new httpclient();
+                //await client.postasjsonasync("http://localhost:5007/api/policy/proposal", new { proposalno = proposal.proposalno });
                 return Created($"api/Proposal/{proposal.ProposalNo}",proposal);
             }
             catch (Exception ex)
