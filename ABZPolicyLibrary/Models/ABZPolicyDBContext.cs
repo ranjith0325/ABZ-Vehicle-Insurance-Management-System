@@ -29,7 +29,7 @@ public partial class ABZPolicyDBContext : DbContext
     {
         modelBuilder.Entity<Policy>(entity =>
         {
-            entity.HasKey(e => e.PolicyNo).HasName("PK_Policy_2E132197C0C6F3F6");
+            entity.HasKey(e => e.PolicyNo).HasName("PK__Policy__2E1321971A5DD0A4");
 
             entity.ToTable("Policy");
 
@@ -53,14 +53,14 @@ public partial class ABZPolicyDBContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength();
 
-            entity.HasOne(d => d.PrososalNoNavigation).WithMany(p => p.Policies)
+            entity.HasOne(d => d.ProposalNoNavigation).WithMany(p => p.Policies)
                 .HasForeignKey(d => d.ProposalNo)
-                .HasConstraintName("FK_PolicyProposal_3A81B327");
+                .HasConstraintName("FK__Policy__Proposal__286302EC");
         });
 
         modelBuilder.Entity<PolicyAddon>(entity =>
         {
-            entity.HasKey(e => new { e.AddonID, e.PolicyNo }).HasName("PK_PolicyAd_16C9A70A3684F887");
+            entity.HasKey(e => new { e.AddonID, e.PolicyNo }).HasName("PK__PolicyAd__16C9A70A513BFB88");
 
             entity.ToTable("PolicyAddon");
 
@@ -77,12 +77,12 @@ public partial class ABZPolicyDBContext : DbContext
             entity.HasOne(d => d.PolicyNoNavigation).WithMany(p => p.PolicyAddons)
                 .HasForeignKey(d => d.PolicyNo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_PolicyAddPolic_3B75D760");
+                .HasConstraintName("FK__PolicyAdd__Polic__29572725");
         });
 
         modelBuilder.Entity<Proposal>(entity =>
         {
-            entity.HasKey(e => e.ProposalNo).HasName("PK_Proposal_6F39E100EF5A4ABC");
+            entity.HasKey(e => e.ProposalNo).HasName("PK__Proposal__6F39C9B36CAD1389");
 
             entity.ToTable("Proposal");
 

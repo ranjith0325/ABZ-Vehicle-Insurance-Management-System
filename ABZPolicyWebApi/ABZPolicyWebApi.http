@@ -19,13 +19,13 @@ Content-Type: application/json
 POST {{ABZPolicyWebApi_HostAddress}}/api/policy
 Content-Type: application/json
 {
-  "policyNo": "==========",
-  "proposalNo": "//////////",
-  "noClaimBonus": 0,
-  "receiptNo": "string",
+  "policyNo": "++++++++++",
+  "proposalNo": "----------",
+  "noClaimBonus": 60000,
+  "receiptNo": "ksglk",
   "receiptDate": "2024-12-21T12:59:33.118Z",
-  "paymentMode": "C",
-  "amount": 0
+  "paymentMode": "U",
+  "amount": 20000
 }
 ###
 GET {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UI

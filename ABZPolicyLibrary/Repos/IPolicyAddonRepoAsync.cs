@@ -10,10 +10,12 @@ namespace ABZPolicyLibrary.Repos
     public interface IPolicyAddonRepoAsync
     {
         Task InsertPolicyAddonAsync(PolicyAddon policyAddon);
-        Task DeletePolicyAddonAsync(string policyNo,string addonId);
+        Task DeletePolicyAddonAsync(string policyNo, string addonId);
         Task<List<PolicyAddon>> GetAllPolicyAddonAsync();
-        Task<PolicyAddon> GetPolicyAddonAsync(string policyNo,string addonId);
-        Task UpdatePolicyAddonAsync(string policyNo,string addonId,PolicyAddon policyAddon);
+        Task<PolicyAddon> GetPolicyAddonAsync(string policyNo, string addonId);
+        Task UpdatePolicyAddonAsync(string policyNo, string addonId, PolicyAddon policyAddon);
+
         Task<List<PolicyAddon>> GetPolicyAddonBYPolicy(string policyNo);
+
     }
 }

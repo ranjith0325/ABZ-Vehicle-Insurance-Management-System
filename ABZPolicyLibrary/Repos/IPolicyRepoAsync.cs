@@ -11,10 +11,12 @@ namespace ABZPolicyLibrary.Repos
     {
         Task InsertPolicyAsync(Policy policy);
         Task DeletePolicyAsync(string policyNo);
-        Task UpdatePolicyAsync(string policyNo,Policy policy);
+        Task UpdatePolicyAsync(string policyNo, Policy policy);
         Task<List<Policy>> GetAllPoliciesAsync();
         Task<Policy> GetPolicyAsync(string policyNo);
-        Task InsertProposalAsync(Proposal proposal);
         Task<List<Policy>> GetPolicyByProposalAsync(string proposalNo);
+        Task InsertProposalAsync(Proposal proposal);
+
+
     }
 }
