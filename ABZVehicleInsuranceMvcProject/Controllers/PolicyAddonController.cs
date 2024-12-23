@@ -7,7 +7,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     public class PolicyAddonController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("")};
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/PolicyAddon/") };
         // GET: PolicyAddonController
         public async Task<ActionResult> Index()
         {
