@@ -95,6 +95,11 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
+        public async Task<ActionResult> ByProposal(string proposalNo)
+        {
+            List<Proposal> proposals = await client.GetFromJsonAsync<List<Proposal>>("ByProposal/" + proposalNo);
+            return View(proposals);
+        }
 
     }
 }

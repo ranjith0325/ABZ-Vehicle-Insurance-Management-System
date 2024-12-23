@@ -49,7 +49,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [Route("Proposal/Edit/{proposalNo}")]
         public async Task<ActionResult> Edit(string proposalNo)
         {
-            Proposal proposal = await client.GetFromJsonAsync<Proposal>(proposalNo);
+            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalNo);
             return View(proposal);
         }
 
@@ -61,7 +61,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.PutAsJsonAsync<Proposal>(proposalNo, proposal);
+                await client.PutAsJsonAsync<Proposal>("" + proposalNo, proposal);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -74,7 +74,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [Route("Proposal/Delete/{proposalNo}")]
         public async Task<ActionResult> Delete(string proposalNo)
         {
-            Proposal proposal = await client.GetFromJsonAsync<Proposal>(proposalNo);
+            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalNo);
             return View(proposal);
         }
 
@@ -86,7 +86,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.DeleteAsync(proposalNo);
+                await client.DeleteAsync("" + proposalNo);
                 return RedirectToAction(nameof(Index));
             }
             catch
