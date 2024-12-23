@@ -9,6 +9,7 @@ namespace ABZClaimWebApi.Controllers
     [ApiController]
     public class ClaimController : ControllerBase
     {
+
         IClaimRepoAsync claimRepo;
         public ClaimController(IClaimRepoAsync repo)
         {

@@ -10,7 +10,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
     public class ProductController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri(" ") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5273/api/Proposal/Product/") };
         // GET: ProductController
         public async Task<ActionResult> Index()
         {
@@ -64,7 +64,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<Product>(""+productID,product);
+                await client.PutAsJsonAsync<Product>(""+productID,product);
                 return RedirectToAction(nameof(Index));
             }
             catch
