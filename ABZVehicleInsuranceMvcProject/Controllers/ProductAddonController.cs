@@ -8,7 +8,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     public class ProductAddonController : Controller
     {
         // GET: ProductAddonController
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri(" ") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/ProductAddon/") };
         public async Task<ActionResult> Index()
         {
             List<ProductAddon> productaddons = await client.GetFromJsonAsync<List<ProductAddon>>("");
