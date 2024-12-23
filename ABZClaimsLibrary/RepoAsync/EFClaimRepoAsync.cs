@@ -36,15 +36,15 @@ namespace ABZClaimsLibrary.RepoAsync
                                      select c).FirstAsync();
                 return claim;
 
-                if (claim == null)
-                {
-                    throw new KeyNotFoundException($"No claim found with ClaimNo: {claimNo}");
-                }
-                return claim;
+                //if (claim == null)
+                //{
+                //    throw new KeyNotFoundException($"No claim found with ClaimNo: {claimNo}");
+                //}
+                //return claim;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("No such ClaimNo Exist");
             }
         }
 
