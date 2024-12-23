@@ -22,7 +22,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: AgentController/Create
-        public async Task<ActionResult> Create(string agentId)
+        public ActionResult Create()
         {
             Agent agent= new Agent();
             return View(agent);

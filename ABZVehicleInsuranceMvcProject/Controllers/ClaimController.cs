@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMvcProject.Models;
+using Claim = ABZVehicleInsuranceMvcProject.Models.Claim;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
@@ -11,21 +12,21 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController
         public async Task<ActionResult> Index()
         {
-            List<Models.Claim> claims = await client.GetFromJsonAsync<List<Models.Claim>>("");
+            List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
             return View(claims);
         }
 
         // GET: ClaimController/Details/5
         public async Task<ActionResult> Details(string claimNo)
         {
-            List<Models.Claim> claims = await client.GetFromJsonAsync<List<Models.Claim>>("" +claimNo);
+            Claim claims = await client.GetFromJsonAsync<Claim>("" + claimNo);
             return View(claims);
         }
 
         // GET: ClaimController/Create
         public ActionResult Create()
         {
-            Models.Claim claim = new Models.Claim();
+            Claim claim = new Claim();
             return View(claim);
         }
 
@@ -33,11 +34,11 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         
-        public async Task<ActionResult> Create(Models.Claim claim)
+        public async Task<ActionResult> Create(Claim claim)
         {
             try
             {
-                await client.PostAsJsonAsync<Models.Claim>("", claim);
+                await client.PostAsJsonAsync<Claim>("", claim);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -49,7 +50,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController/Edit/5
         public async Task<ActionResult> Edit(string claimNo)
         {
-            Models.Claim claim = await client.GetFromJsonAsync<Models.Claim>("" + claimNo);
+            Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
             return View(claim);
         }
 
@@ -57,11 +58,11 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Claim/Edit/{claimNo}")]
-        public async Task<ActionResult> Edit(string claimNo,Models.Claim claim)
+        public async Task<ActionResult> Edit(string claimNo,Claim claim)
         {
             try
             {
-                await client.PutAsJsonAsync<Models.Claim>("" + claimNo, claim);
+                await client.PutAsJsonAsync<Claim>("" + claimNo, claim);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -73,7 +74,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController/Delete/5
         public async Task<ActionResult> Delete(string claimNo)
         {
-            Models.Claim claim=await client.GetFromJsonAsync<Models.Claim>(""+claimNo);
+            Claim claim=await client.GetFromJsonAsync<Claim>(""+claimNo);
             return View(claim);
         }
 
@@ -95,7 +96,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
         public async Task<ActionResult> ByPolicy(string policyNo)
         {
-            List<Models.Claim> claims=await client.GetFromJsonAsync<List<Models.Claim>>("ByPolicy/"+policyNo);
+            List<Claim> claims=await client.GetFromJsonAsync<List<Claim>>("ByPolicy/"+policyNo);
             return View(claims);
         }
 
