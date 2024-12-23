@@ -82,8 +82,6 @@ namespace ABZClaimWebApi.Controllers
         [HttpGet("policy/{policyNo}")]
         public async Task<ActionResult> GetByPolicy(string policyNo)
         {
-            try
-            {
                 List<Claim> claims = await claimRepo.GetClaimsByPolicyNoAsync(policyNo);
                 return Ok(claims);
             }
