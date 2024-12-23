@@ -7,7 +7,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     public class AgentController : Controller
     {
         // GET: AgentController
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri(" ") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
         public async Task<ActionResult> Index()
         {
             List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("");

@@ -7,7 +7,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     public class CustomerController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri(" ") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
         // GET: CustomerController
         public async Task<ActionResult> Index()
         {
