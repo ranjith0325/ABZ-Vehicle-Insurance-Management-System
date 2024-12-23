@@ -1,7 +1,6 @@
 ﻿using ABZVehicleInsuranceMvcProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ABZVehicleInsuranceMvcProject.Controllers;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
