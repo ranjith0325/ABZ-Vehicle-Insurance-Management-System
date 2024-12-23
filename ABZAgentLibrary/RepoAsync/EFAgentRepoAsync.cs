@@ -25,9 +25,9 @@ namespace ABZAgentLibrary.Repos
                 Agent agent = await (from a in ctx.Agents where a.AgentID == agentId select a).FirstAsync();
                 return agent;
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception(ex.Message);
+                throw new Exception("No such ID exist");
             }
         }
         public async Task<List<Agent>> GetAllAgentsAsync()
