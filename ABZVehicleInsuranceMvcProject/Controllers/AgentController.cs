@@ -43,7 +43,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-
+        [Route("Agent/Edit/{agentId}")]
         // GET: AgentController/Edit/5
         public async Task<ActionResult> Edit(string agentId)
         {
@@ -68,7 +68,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-
+        [Route("Agent/Delete/{agentId}")]
         // GET: AgentController/Delete/5
         public async Task<ActionResult> Delete(string agentId)
         {

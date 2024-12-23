@@ -1,10 +1,10 @@
-﻿@model IEnumerable<ProductAddon>
+﻿@model IEnumerable<ABZVehicleInsuranceMvcProject.Models.PolicyAddon>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "BYPolicy";
 }
 
-<h1>Index</h1>
+<h1>BYPolicy</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,16 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.AddonID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AddonTitle)
+                @Html.DisplayNameFor(model => model.PolicyNo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AddonDescription)
+                @Html.DisplayNameFor(model => model.Amount)
             </th>
             <th></th>
         </tr>
@@ -31,16 +28,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.AddonID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AddonTitle)
+                @Html.DisplayFor(modelItem => item.PolicyNo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AddonDescription)
+                @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

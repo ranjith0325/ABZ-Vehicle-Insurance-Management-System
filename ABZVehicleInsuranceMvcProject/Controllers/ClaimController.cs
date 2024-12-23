@@ -18,7 +18,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController/Details/5
         public async Task<ActionResult> Details(string claimNo)
         {
-            List<Models.Claim> claims = await client.GetFromJsonAsync<List<Models.Claim>>(""+claimNo);
+            List<Models.Claim> claims = await client.GetFromJsonAsync<List<Models.Claim>>("" +claimNo);
             return View(claims);
         }
 
