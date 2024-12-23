@@ -93,7 +93,11 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-        
+        public async Task<ActionResult> ByPolicy(string policyNo)
+        {
+            List<Models.Claim> claims=await client.GetFromJsonAsync<List<Models.Claim>>("ByPolicy/"+policyNo);
+            return View(claims);
+        }
 
     }
 }
