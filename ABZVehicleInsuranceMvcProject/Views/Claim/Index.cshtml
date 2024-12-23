@@ -93,7 +93,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { claimNo=item.ClaimNo }) |
                     @Html.ActionLink("Details", "Details", new { claimNo = item.ClaimNo }) |
-                    @Html.ActionLink("ByPolicy", "ByPolicy", new { claimNo = item.ClaimNo }) |
+                    @Html.ActionLink("ByPolicy", "ByPolicy", new { policyNo = item.PolicyNo }) |
                     @Html.ActionLink("Delete", "Delete", new { claimNo = item.ClaimNo })
             </td>
         </tr>
