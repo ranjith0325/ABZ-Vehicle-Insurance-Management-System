@@ -50,11 +50,9 @@ namespace ABZClaimsLibrary.RepoAsync
 
         public async Task<List<Claim>> GetClaimsByPolicyNoAsync(string policyNo)
         {
-            List<Claim> claims = await (from c in ctx.Claims
-                                        where c.PolicyNo == policyNo
-                                        select c).ToListAsync();
+            List<Claim> claims = await (from c in ctx.Claims where c.PolicyNo == policyNo select c).ToListAsync();
             if (claims.Count == 0)
-                throw new Exception("No such customer id");
+                throw new Exception("No such PolicyNo exist");
             else
                 return claims;
            

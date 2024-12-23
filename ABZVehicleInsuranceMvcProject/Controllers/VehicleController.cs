@@ -68,7 +68,6 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-        [HttpDelete]
         [Route("Vehicle/Delete/{regNo}")]
         // GET: VehicleController/Delete/5
         public async Task<ActionResult> Delete(string regNo)
