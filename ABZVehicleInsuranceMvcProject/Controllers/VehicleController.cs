@@ -9,7 +9,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5273/api/Proposal/Vehicle/") };
         // GET: VehicleController
-        public async Task<ActionResult> IndexAsync()
+        public async Task<ActionResult> Index()
         {
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("");
             return View(vehicles);
@@ -37,7 +37,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             try
             {
                 await client.PostAsJsonAsync<Vehicle>("",vehicle);
-                return RedirectToAction(nameof(IndexAsync));
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -55,33 +55,38 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: VehicleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string regNo, Vehicle vehicle)
+        [Route("Vehicle/Edit/{regNo}")]
+        public async Task<ActionResult> Edit(string regNo, Vehicle vehicle)
         {
             try
-            
-
-                return RedirectToAction(nameof(IndexAsync));
+            { 
+                await client.PutAsJsonAsync<Vehicle>(""+regNo,vehicle);
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
         }
-
+        [HttpDelete]
+        [Route("Vehicle/Delete/{regNo}")]
         // GET: VehicleController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(string regNo)
         {
-            return View();
+            Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>("" + regNo);
+            return View(vehicle);
         }
 
         // POST: VehicleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [Route("Vehicle/Delete/{regNo}")]
+        public async Task<ActionResult> Delete(string regNo, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(IndexAsync));
+                await client.DeleteAsync(""+regNo);
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
