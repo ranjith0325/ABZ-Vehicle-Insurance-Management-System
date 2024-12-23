@@ -6,7 +6,7 @@
     <Name>ABZPolicyDBProject</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{af373e13-94fb-48f9-ab9a-e4381304ad73}</ProjectGuid>
+    <ProjectGuid>{9005622a-a65c-4c8a-b89b-841a5a204c2b}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -22,6 +22,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <GenerateCreateScript>False</GenerateCreateScript>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -58,8 +59,8 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Proposal.sql" />
     <Build Include="Policy.sql" />
     <Build Include="PolicyAddon.sql" />
+    <Build Include="Proposal.sql" />
   </ItemGroup>
 </Project>

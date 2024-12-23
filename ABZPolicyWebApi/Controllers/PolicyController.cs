@@ -48,18 +48,9 @@ namespace ABZPolicyWebApi.Controllers
             }
             catch (Exception ex)
             {
-                {
-                    return BadRequest(ex.Message);
-                }
+                return BadRequest(ex.Message);
             }
         }
-        [HttpPost("Proposal")]
-        public async Task<ActionResult> Insert(Proposal proposal)
-        {
-            await policyRepo.InsertProposalAsync(proposal);
-            return Created();
-        }
-
         [HttpPut("{policyNo}")]
         public async Task<ActionResult> Update(string policyNo, Policy policy)
         {
@@ -88,5 +79,25 @@ namespace ABZPolicyWebApi.Controllers
             }
         }
 
+        [HttpGet("ByProposal/{proposalNo}")]
+        public async Task<ActionResult> GetByProposalAsync(string proposalNo)
+        {
+            try
+            {
+                List<Policy> polycies = await policyRepo.GetPolicyByProposalAsync(proposalNo);
+                return Ok(polycies);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+        }
+        [HttpPost("Proposal")]
+        public async Task<ActionResult> InsertProposalAsync(Proposal proposal)
+        {
+            await policyRepo.InsertProposalAsync(proposal);
+            return Created();
+        }
     }
 }

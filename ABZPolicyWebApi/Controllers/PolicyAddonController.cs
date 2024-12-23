@@ -74,5 +74,19 @@ namespace ABZPolicyWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("ByPolicy/{policyNo}")]
+        public async Task<ActionResult> GetPolicyAddonBYPolicy(string policyNo)
+        {
+            try
+            {
+                List<PolicyAddon> policyAddons = await poliaddRepo.GetPolicyAddonBYPolicy(policyNo);
+                return Ok(policyAddons);
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+        }
+
     }
 }

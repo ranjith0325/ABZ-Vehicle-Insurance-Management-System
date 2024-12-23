@@ -16,6 +16,7 @@ namespace ABZProductWebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IProductRepoAsync, EFProductRepoAsync>();
+            builder.Services.AddScoped<IProductAddonRepoAsync, EFProductAddonRepoAsync>();
 
             var app = builder.Build();
 
