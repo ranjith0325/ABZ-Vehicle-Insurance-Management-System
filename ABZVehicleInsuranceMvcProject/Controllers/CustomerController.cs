@@ -46,6 +46,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: CustomerController/Edit/5
+        [Route("Customer/Edit/{customerId}")]
+
         public async Task<ActionResult> Edit(string customerId)
         {
             Customer customer = await client.GetFromJsonAsync<Customer>("" + customerId);
@@ -70,6 +72,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: CustomerController/Delete/5
+        [Route("Customer/Delete/{customerId}")]
         public async Task<ActionResult> Delete(string customerId)
         {
             Customer customer = await client.GetFromJsonAsync<Customer>("" + customerId);

@@ -48,9 +48,9 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-
+        [Route("Product/Edit/{productID}")]
         // GET: ProductController/Edit/5
-        public async Task<ActionResult> Edit(Product productID)
+        public async Task<ActionResult> Edit(string productID)
         {
             Product product = await client.GetFromJsonAsync<Product>("" + productID);
             return View(product);
