@@ -92,5 +92,10 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
+        public async Task<ActionResult> ByCustomer(string customerId)
+        {
+            List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("ByCustomer/" + customerId);
+            return View(vehicles);
+        }
     }
 }
