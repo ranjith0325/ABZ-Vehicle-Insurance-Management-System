@@ -94,25 +94,25 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> ByVehicle(string vehicleId)
+        public async Task<ActionResult> ByVehicle(string regNo)
         {
-            List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("ByVehicle/" + vehicleId);
+            List<Proposal> vehicles = await client.GetFromJsonAsync<List<Proposal>>("ByVehicle/" + regNo);
             return View(vehicles);
         }
         public async Task<ActionResult> ByProduct(string productId)
         {
-            List<Product> products = await client.GetFromJsonAsync<List<Product>>("ByProduct/" + productId);
+            List<Proposal> products = await client.GetFromJsonAsync<List<Proposal>>("ByProduct/" + productId);
             return View(products);
         }
         public async Task<ActionResult> ByCustomer(string customerId)
         {
-            List<Customer> customers = await client.GetFromJsonAsync<List<Customer>>("ByCustomer/" + customerId);
+            List<Proposal> customers = await client.GetFromJsonAsync<List<Proposal>>("ByCustomer/" + customerId);
             return View(customers);
         }
         public async Task<ActionResult> ByAgent(string agentId)
         {
-            List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("ByAgent/" + agentId);
-        return View(agents);
+            List<Proposal> agents = await client.GetFromJsonAsync<List<Proposal>>("ByAgent/" + agentId);
+            return View(agents);
         }
     }
 }
