@@ -17,6 +17,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             List<Product> products = await client.GetFromJsonAsync<List<Product>>("");
             return View(products);
         }
+        
+
 
         // GET: ProductController/Details/5
         public async Task<ActionResult> Details(string productID)
@@ -97,5 +99,6 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
+     
     }
 }
