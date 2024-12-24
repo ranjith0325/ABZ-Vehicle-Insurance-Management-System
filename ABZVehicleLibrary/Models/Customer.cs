@@ -5,7 +5,7 @@ namespace ABZVehicleLibrary.Models;
 
 public partial class Customer
 {
-    public string CustomerId { get; set; } = null!;
+    public string CustomerID { get; set; } = null!;
 
     public virtual ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
 }
