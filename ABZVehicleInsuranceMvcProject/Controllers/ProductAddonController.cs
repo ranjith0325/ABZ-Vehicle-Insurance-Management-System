@@ -8,16 +8,17 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     {
         // GET: ProductAddonController
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/ProductAddon/") };
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string pid)
         {
-            List<ProductAddon> productaddons = await client.GetFromJsonAsync<List<ProductAddon>>("");
+            List<ProductAddon> productaddons = await client.GetFromJsonAsync<List<ProductAddon>>("" + pid);
             return View(productaddons);
         }
 
+
         // GET: ProductAddonController/Details/5
-        public async Task<ActionResult> Details(string addonId)
+        public async Task<ActionResult> Details(string productID,string addonId)
         {
-            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>("" + addonId);
+            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productaddon);
         }
 
@@ -43,24 +44,27 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
+        [Route("ProductAddon/Edit/{productID}/{addonId}")]
 
         // GET: ProductAddonController/Edit/5
-        public async Task<ActionResult> Edit(string addonId)
+
+        public async Task<ActionResult> Edit(string productID,string addonId)
         {
-            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>("" + addonId);
+            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}/");
             return View(productaddon);
         }
 
         // POST: ProductAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("ProductAddon/Edit/{productaddonId}")]
+        [Route("ProductAddon/Edit/{productID}/{addonId}")]
 
-        public async Task<ActionResult> Edit(string addonId, ProductAddon productaddon)
+
+        public async Task<ActionResult> Edit(string productID,string addonId, ProductAddon productaddon)
         {
             try
             {
-                await client.PostAsJsonAsync<ProductAddon>("" + addonId, productaddon);
+                await client.PutAsJsonAsync<ProductAddon>($"{productID}/{addonId}/", productaddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -70,24 +74,24 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: ProductAddonController/Delete/5
-        [Route("ProductAddon/Delete/{addonID}")]
+        [Route("ProductAddon/Delete/{productID}/{addonId}")]
 
-        public async Task<ActionResult> Delete(string addonId)
+        public async Task<ActionResult> Delete(string productID,string addonId)
         {
-            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>("" + addonId);
+            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productaddon);
         }
 
         // POST: ProductAddonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("ProductAddon/Delete/{addonId}")]
+        [Route("ProductAddon/Delete/{productID}/{addonId}")]
 
-        public async Task<ActionResult> Delete(string addonId, IFormCollection collection)
+        public async Task<ActionResult> Delete(string productID,string addonId, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + addonId);
+                await client.DeleteAsync($"{productID}/{addonId}");
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -95,10 +99,10 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> ByProduct(string productId)
-        {
-            List<ProductAddon> productAddons = await client.GetFromJsonAsync<List<ProductAddon>>("ByProduct/" + productId);
-            return View(productAddons);
-        }
+        //public async Task<ActionResult> ByProduct(string productId)
+        //{
+        //    List<ProductAddon> productAddons = await client.GetFromJsonAsync<List<ProductAddon>>("ByProduct/" + productId);
+        //    return View(productAddons);
+        //}
     }
 }
