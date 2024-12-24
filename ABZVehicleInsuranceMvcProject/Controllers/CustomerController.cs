@@ -57,12 +57,12 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Customer/Edit/{customerID}")]
-        public async Task<ActionResult> Edit(string customerID, Customer customer)
+        [Route("Customer/Edit/{customerId}")]
+        public async Task<ActionResult> Edit(string customerId, Customer customer)
         {
             try
             {
-                await client.PutAsJsonAsync<Customer>("" + customerID, customer);
+                await client.PutAsJsonAsync<Customer>("" + customerId, customer);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -72,22 +72,22 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: CustomerController/Delete/5
-        [Route("Customer/Delete/{customerID}")]
-        public async Task<ActionResult> Delete(string customerID)
+        [Route("Customer/Delete/{customerId}")]
+        public async Task<ActionResult> Delete(string customerId)
         {
-            Customer customer = await client.GetFromJsonAsync<Customer>("" + customerID);
+            Customer customer = await client.GetFromJsonAsync<Customer>("" + customerId);
             return View(customer);
         }
 
         // POST: CustomerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Customer/Delete/{customerID}")]
-        public async Task<ActionResult> Delete(string customerID, IFormCollection collection)
+        [Route("Customer/Delete/{customerId}")]
+        public async Task<ActionResult> Delete(string customerId, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + customerID);
+                await client.DeleteAsync("" + customerId);
                 return RedirectToAction(nameof(Index));
             }
             catch
