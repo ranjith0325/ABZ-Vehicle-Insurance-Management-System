@@ -27,7 +27,7 @@ namespace ABZAgentLibrary.Repos
             }
             catch
             {
-                throw new Exception("No such ID exist");
+                throw new Exception("No such AgentID exist");
             }
         }
         public async Task<List<Agent>> GetAllAgentsAsync()
@@ -48,6 +48,7 @@ namespace ABZAgentLibrary.Repos
             agent1.AgentName = agent.AgentName;
             agent1.AgentPhone = agent.AgentPhone;
             agent1.AgentEmail = agent.AgentEmail;
+            agent1.LicenseCode = agent.LicenseCode;
             await ctx.SaveChangesAsync();
         }
     }

@@ -68,7 +68,6 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-        [HttpDelete]
         [Route("Vehicle/Delete/{regNo}")]
         // GET: VehicleController/Delete/5
         public async Task<ActionResult> Delete(string regNo)
@@ -92,6 +91,11 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             {
                 return View();
             }
+        }
+        public async Task<ActionResult> ByCustomer(string customerId)
+        {
+            List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("ByCustomer/" + customerId);
+            return View(vehicles);
         }
     }
 }

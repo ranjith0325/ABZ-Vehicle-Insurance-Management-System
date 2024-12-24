@@ -79,7 +79,7 @@ namespace ABZClaimWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("policy/{policyNo}")]
+        [HttpGet("ByPolicy/{policyNo}")]
         public async Task<ActionResult> GetByPolicy(string policyNo)
         {
             try

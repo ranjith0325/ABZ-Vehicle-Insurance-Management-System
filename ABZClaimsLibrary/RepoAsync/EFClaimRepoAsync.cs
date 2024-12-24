@@ -36,25 +36,23 @@ namespace ABZClaimsLibrary.RepoAsync
                                      select c).FirstAsync();
                 return claim;
 
-                if (claim == null)
-                {
-                    throw new KeyNotFoundException($"No claim found with ClaimNo: {claimNo}");
-                }
-                return claim;
+                //if (claim == null)
+                //{
+                //    throw new KeyNotFoundException($"No claim found with ClaimNo: {claimNo}");
+                //}
+                //return claim;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("No such ClaimNo Exist");
             }
         }
 
         public async Task<List<Claim>> GetClaimsByPolicyNoAsync(string policyNo)
         {
-            List<Claim> claims = await (from c in ctx.Claims
-                                        where c.PolicyNo == policyNo
-                                        select c).ToListAsync();
+            List<Claim> claims = await (from c in ctx.Claims where c.PolicyNo == policyNo select c).ToListAsync();
             if (claims.Count == 0)
-                throw new Exception("No such customer id");
+                throw new Exception("No such PolicyNo exist");
             else
                 return claims;
            

@@ -71,7 +71,7 @@ namespace ABZVehicleWebApi.Controllers
                 await vehRepo.InsertVehicleAsync(vehicle);
                 HttpClient client = new HttpClient();
                 await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new { RegNo=vehicle.RegNo });
-               // await client.PostAsJsonAsync("http://abzproposalwebapi-mani.azurewebsites.net/api/proposal/Vehicle", new { RegNo = vehicle.RegNo });
+              // await client.PostAsJsonAsync("http://abzproposalwebapi-mani.azurewebsites.net/api/proposal/Vehicle", new { RegNo = vehicle.RegNo });
 
                 return Created($"api/Vehicle/{vehicle.RegNo}",vehicle);
             }
