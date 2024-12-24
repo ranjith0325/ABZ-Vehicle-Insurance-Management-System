@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<ABZVehicleInsuranceMvcProject.Models.Proposal>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ByAgent";
 }
 
-<h1>Index</h1>
+<h1>ByAgent</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -78,16 +76,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { proposalNo = item.ProposalNo }) |
-                    @Html.ActionLink("Details", "Details", new { proposalNo = item.ProposalNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { proposalNo = item.ProposalNo })  |
-                    @Html.ActionLink("ByAgent", "ByAgent", new { agentId = item.AgentID })  |
-                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.CustomerID }) |
-                    @Html.ActionLink("ByProduct", "ByProduct", new { productId = item.ProductID }) |
-                    @Html.ActionLink("ByVehicle", "ByVehicle", new { regNo = item.RegNo })
-            </td>
+            
         </tr>
 }
     </tbody>
 </table>
+<a asp-action="Index">Back to List</a>
