@@ -46,7 +46,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: PolicyAddonController/Edit/5
-        [Route("Policy/Edit/{addonId}")]
+        [Route("PolicyAddon/Edit/{addonId}")]
         public async Task<ActionResult> Edit(string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + addonId);
@@ -56,7 +56,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: PolicyAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Policy/Edit/{addonId}")]
+        [Route("PolicyAddon/Edit/{addonId}")]
         public async Task<ActionResult> Edit(string addonId, PolicyAddon policyaddon)
         {
             try
@@ -71,7 +71,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: PolicyAddonController/Delete/5
-        [Route("Policy/Delete/{addonId}")]
+        [Route("PolicyAddon/Delete/{addonId}")]
         public async Task<ActionResult> Delete(string addonId)
         {
             PolicyAddon policyaddon = await client.GetFromJsonAsync<PolicyAddon>("" + addonId);
@@ -81,7 +81,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: PolicyAddonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Policy/Delete/{addonId}")]
+        [Route("PolicyAddon/Delete/{addonId}")]
         public async Task<ActionResult> Delete(string addonId, IFormCollection collection)
         {
             try
