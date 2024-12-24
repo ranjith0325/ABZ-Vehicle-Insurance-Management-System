@@ -103,7 +103,7 @@ namespace ABZProposalWebApi.Controllers
             return Created();
         }
 
-        [HttpGet("ByVehicle{regNo}")]
+        [HttpGet("ByVehicle/{regNo}")]
         public async Task<ActionResult> GetByVehicle(string regNo)
         {
             try
@@ -116,7 +116,7 @@ namespace ABZProposalWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpGet("ByAgent{agentId}")]
+        [HttpGet("ByAgent/{agentId}")]
         public async Task<ActionResult> GetByAgent(string agentId)
         {
             try
@@ -129,7 +129,7 @@ namespace ABZProposalWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpGet("ByCustomer{customerId}")]
+        [HttpGet("ByCustomer/{customerId}")]
         public async Task<ActionResult> GetByCustomer(string customerId)
         {
             try
@@ -142,7 +142,7 @@ namespace ABZProposalWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpGet("ByProduct{productId}")]
+        [HttpGet("ByProduct/{productId}")]
         public async Task<ActionResult> GetByProduct(string productId)
         {
             try

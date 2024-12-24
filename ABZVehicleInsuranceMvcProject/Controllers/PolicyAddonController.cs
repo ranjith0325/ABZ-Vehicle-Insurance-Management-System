@@ -16,9 +16,9 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: PolicyAddonController/Details/5
-        public async Task<ActionResult> Details(string addonId)
+        public async Task<ActionResult> Details(string policyNo,string addonId)
         {
-            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
             return View(policyAddon);
         }
 
@@ -46,22 +46,22 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: PolicyAddonController/Edit/5
-        [Route("PolicyAddon/Edit/{addonId}")]
-        public async Task<ActionResult> Edit(string addonId)
+        [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
+        public async Task<ActionResult> Edit(string policyNo, string addonId)
         {
-            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
             return View(policyAddon);
         }
 
         // POST: PolicyAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("PolicyAddon/Edit/{addonId}")]
-        public async Task<ActionResult> Edit(string addonId, PolicyAddon policyaddon)
+        [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
+        public async Task<ActionResult> Edit(string policyNo,string addonId, PolicyAddon policyaddon)
         {
             try
             {
-                await client.PutAsJsonAsync("" + addonId, policyaddon);
+                await client.PutAsJsonAsync($"{policyNo}/{addonId}/",policyaddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -71,22 +71,22 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: PolicyAddonController/Delete/5
-        [Route("PolicyAddon/Delete/{addonId}")]
-        public async Task<ActionResult> Delete(string addonId)
+        [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
+        public async Task<ActionResult> Delete(string policyNo, string addonId)
         {
-            PolicyAddon policyaddon = await client.GetFromJsonAsync<PolicyAddon>("" + addonId);
+            PolicyAddon policyaddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
             return View(policyaddon);
         }
 
         // POST: PolicyAddonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("PolicyAddon/Delete/{addonId}")]
-        public async Task<ActionResult> Delete(string addonId, IFormCollection collection)
+        [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
+        public async Task<ActionResult> Delete(string policyNo, string addonId, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + addonId);
+                await client.DeleteAsync($"{policyNo}/{addonId}");
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -94,9 +94,9 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> BYPolicy(string addonId)
+        public async Task<ActionResult> BYPolicy(string policyNo)
         {
-            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("BYPolicy/" + addonId);
+            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("ByPolicy/" + policyNo);
             return View(policyAddons);
         }
     }
