@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using NuGet.Common;
 
 namespace ABZVehicleInsuranceMvcProject.Models
 {
     public class ForeignKeyHelper
     {
-        public static async Task<List<SelectListItem>> GetCustomerIds()
+        public static async Task<List<SelectListItem>> GetCustomerIds(string token)
         {
             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Customer> customers = await client.GetFromJsonAsync<List<Customer>>("");
             List<SelectListItem> customerIds = new List<SelectListItem>();
             foreach (Customer customer in customers)
@@ -15,9 +17,10 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return customerIds;
         }
-        public static async Task<List<SelectListItem>> GetPolicyNos()
+        public static async Task<List<SelectListItem>> GetPolicyNos(string token)
         {
             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Policy> policies = await client.GetFromJsonAsync<List<Policy>>("");
             List<SelectListItem> policyNos = new List<SelectListItem>();
             foreach (Policy policy in policies)
@@ -26,9 +29,10 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return policyNos;
         }
-        public static async Task<List<SelectListItem>> GetProductIds()
+        public static async Task<List<SelectListItem>> GetProductIds(string token)
         {
             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/Product/") };
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Product> products = await client.GetFromJsonAsync<List<Product>>("");
             List<SelectListItem> productIds = new List<SelectListItem>();
             foreach (Product product in products)
@@ -37,9 +41,10 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return productIds;
         }
-        public static async Task<List<SelectListItem>> GetAgentIds()
+        public static async Task<List<SelectListItem>> GetAgentIds(string token)
         {
             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("");
             List<SelectListItem> agentIds = new List<SelectListItem>();
             foreach (Agent agent in agents)
@@ -48,9 +53,10 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return agentIds;
         }
-        public static async Task<List<SelectListItem>> GetRegNos()
+        public static async Task<List<SelectListItem>> GetRegNos(string token)
         {
             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5083/api/Vehicle/") };
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("");
             List<SelectListItem> regNos = new List<SelectListItem>();
             foreach (Vehicle vehicle in vehicles)
@@ -59,9 +65,10 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return regNos;
         }
-        public static async Task<List<SelectListItem>> GetProposalNos()
+        public static async Task<List<SelectListItem>> GetProposalNos(string token)
         {
             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5273/api/proposal/") };
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Proposal> proposals = await client.GetFromJsonAsync<List<Proposal>>("");
             List<SelectListItem> proposalNos = new List<SelectListItem>();
             foreach (Proposal proposal in proposals)

@@ -19,8 +19,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             HttpClient client2 = new HttpClient();
             //token = await client2.GetStringAsync("https://authenticationwebapi-snrao.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
             token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
-
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("");
             return View(vehicles);
         }
@@ -35,6 +35,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: VehicleController/Create
         public async Task<ActionResult> Create()
         {
+            ViewData["token"] = token;
             Vehicle vehicle=new Vehicle();
             return View(vehicle);
         }
@@ -46,7 +47,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<Vehicle>("",vehicle);
+                await client.PostAsJsonAsync<Vehicle>(""+token,vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -58,6 +59,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: VehicleController/Edit/5
         public async Task<ActionResult> Edit(string regNo)
         {
+            ViewData["token"] = token;
             Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>(""+ regNo);
             return View(vehicle);
         }

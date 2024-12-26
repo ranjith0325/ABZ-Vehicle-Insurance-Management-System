@@ -19,7 +19,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
             //token = await client2.GetStringAsync("https://authenticationwebapi-snrao.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("https://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             // GET: ClaimController
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
@@ -36,6 +36,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController/Create
         public ActionResult Create()
         {
+            ViewData["token"] = token;
             Claim claim = new Claim();
             return View(claim);
         }
@@ -60,6 +61,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController/Edit/5
         public async Task<ActionResult> Edit(string claimNo)
         {
+            ViewData["token"] = token;
             Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
             return View(claim);
         }

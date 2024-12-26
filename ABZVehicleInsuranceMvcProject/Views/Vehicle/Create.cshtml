@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    string token = (string)ViewData["token"];
 }
 
 <h1>Create</h1>
@@ -85,7 +86,7 @@
             <div class="form-group">
                 <label asp-for="OwnerId" class="control-label"></label>
                 @* <input asp-for="OwnerId" class="form-control" /> *@
-                @Html.DropDownListFor(model => model.OwnerId, await ForeignKeyHelper.GetCustomerIds())
+                @Html.DropDownListFor(model => model.OwnerId, await ForeignKeyHelper.GetCustomerIds(token))
                  <span asp-validation-for="OwnerId" class="text-danger"></span>
                 
             </div>
