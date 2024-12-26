@@ -13,7 +13,7 @@ public partial class CustomerQuery
 
     public DateTime? QueryDate { get; set; }
 
-    public string? status { get; set; }
+    public string? Status { get; set; }
 
     public virtual Customer Customer { get; set; } = null!;
 

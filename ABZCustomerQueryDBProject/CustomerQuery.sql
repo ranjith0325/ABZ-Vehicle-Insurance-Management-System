@@ -5,5 +5,5 @@
 	foreign key(CustomerID) references Customer(CustomerID),
 	Description VARCHAR(100),
 	QueryDate DATETIME,
-	status CHAR(1) check (status in ('A','R'))
+	Status CHAR(1) check (status in ('A','R'))
 )

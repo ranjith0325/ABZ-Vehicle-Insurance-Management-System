@@ -71,7 +71,7 @@ public partial class ABZCustomerQueryDBContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.QueryDate).HasColumnType("datetime");
-            entity.Property(e => e.status)
+            entity.Property(e => e.Status)
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .IsFixedLength();
