@@ -15,7 +15,7 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return customerIds;
         }
-        public static async Task<List<SelectListItem>> GetPolicyIds()
+        public static async Task<List<SelectListItem>> GetPolicyNos()
         {
             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };
             List<Policy> policies = await client.GetFromJsonAsync<List<Policy>>("");
