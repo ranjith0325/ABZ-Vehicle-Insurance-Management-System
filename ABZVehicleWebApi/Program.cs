@@ -32,8 +32,8 @@ namespace ABZVehicleWebApi
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = "https://www.snrao.com",
-                    ValidAudience = "https://www.snrao.com",
+                    ValidIssuer = "https://www.team2.com",
+                    ValidAudience = "https://www.team2.com",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("My name is Bond, James Bond the great"))
                 };
             });
@@ -46,7 +46,7 @@ namespace ABZVehicleWebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
