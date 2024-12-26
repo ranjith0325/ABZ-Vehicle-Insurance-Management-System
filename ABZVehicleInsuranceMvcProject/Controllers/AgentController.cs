@@ -1,4 +1,5 @@
-﻿using ABZVehicleInsuranceMvcProject.Models;
+﻿using System.Data;
+using ABZVehicleInsuranceMvcProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +9,19 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     {
         // GET: AgentController
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
+        static string token;
+
         public async Task<ActionResult> Index()
         {
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "My name is Bond, James Bond the great";
+            HttpClient client2 = new HttpClient();
+            //token = await client2.GetStringAsync("https://authenticationwebapi-snrao.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("");
             return View(agents);
         }
@@ -24,7 +36,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: AgentController/Create
         public ActionResult Create()
         {
-            Agent agent= new Agent();
+            Agent agent = new Agent();
             return View(agent);
         }
 
