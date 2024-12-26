@@ -20,8 +20,8 @@ namespace AuthenticationWebApi.Controllers
             new Claim(ClaimTypes.Role, role)
         };
             var token = new JwtSecurityToken(
-                issuer: "https://www.snrao.com",
-                audience: "https://www.snrao.com",
+                issuer: "https://www.team2.com",
+                audience: "https://www.team2.com",
                 expires: DateTime.Now.AddHours(2),
                 signingCredentials: credentials,
                 claims: claims
