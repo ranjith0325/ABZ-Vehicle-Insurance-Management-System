@@ -3,15 +3,25 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMvcProject.Models;
 using Claim = ABZVehicleInsuranceMvcProject.Models.Claim;
+using System.Data;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     public class ClaimController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
-        // GET: ClaimController
+        static string token;
+
         public async Task<ActionResult> Index()
         {
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "My name is Bond, James Bond the great";
+            HttpClient client2 = new HttpClient();
+            //token = await client2.GetStringAsync("https://authenticationwebapi-snrao.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("https://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            // GET: ClaimController
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
             return View(claims);
         }
