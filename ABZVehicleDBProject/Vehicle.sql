@@ -15,5 +15,5 @@
 	BodyType VARCHAR(10) NOT NULL,
 	LeasedBy VARCHAR(20) NULL,
 	OwnerId CHAR(10) NOT NULL,
-	FOREIGN KEY (OwnerId) references Customer(CustomerId)
+	FOREIGN KEY (OwnerId) references Customer(CustomerID)
 )
