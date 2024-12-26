@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using ABZCustomerLibrary.Models;
 using ABZCustomerLibrary.RepoAsync;
 using System.Net.Http.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZCustomerWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class CustomerController : ControllerBase
     {
         ICustomerRepoAsync custRepo;

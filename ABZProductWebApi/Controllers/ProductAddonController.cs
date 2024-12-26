@@ -1,5 +1,6 @@
 ﻿using ABZProductLibrary.Models;
 using ABZProductLibrary.Repos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,8 @@ namespace ABZProductWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ProductAddonController : ControllerBase
     {
         IProductAddonRepoAsync proRepo;
