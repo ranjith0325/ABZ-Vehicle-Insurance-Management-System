@@ -18,6 +18,7 @@ namespace ABZProductWebApi
             builder.Services.AddScoped<IProductRepoAsync, EFProductRepoAsync>();
             builder.Services.AddScoped<IProductAddonRepoAsync, EFProductAddonRepoAsync>();
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
