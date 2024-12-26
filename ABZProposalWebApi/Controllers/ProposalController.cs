@@ -11,6 +11,7 @@ namespace ABZProposalWebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+
     public class ProposalController : ControllerBase
     {
         IProposalRepoAsync proRepo;
