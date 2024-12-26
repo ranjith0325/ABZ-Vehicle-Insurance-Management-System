@@ -60,7 +60,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         public async Task<ActionResult> Edit(string regNo)
         {
             ViewData["token"] = token;
-            Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>(""+ regNo);
+            Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>(""+regNo);
             return View(vehicle);
         }
 

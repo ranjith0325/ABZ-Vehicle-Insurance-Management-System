@@ -43,12 +43,14 @@ namespace ABZClaimWebApi.Controllers
             await claimRepo.InsertPolicyAsync(policy);
             return Created();
         }
-        [HttpPost]
-        public async Task<ActionResult> Insert(Claim claim)
+        [HttpPost("{token}")]
+        public async Task<ActionResult> Insert(string token,Claim claim)
         {
             try
             {
                 await claimRepo.InsertClaimAsync(claim);
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 return Created($"api/Claim/{claim.ClaimNo}",claim);
             }
             catch (Exception ex)

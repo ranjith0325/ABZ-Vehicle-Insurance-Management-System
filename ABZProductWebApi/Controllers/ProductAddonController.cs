@@ -38,12 +38,14 @@ namespace ABZProductWebApi.Controllers
                return NotFound(ex.Message);
             }
         }
-        [HttpPost]
-        public async Task<ActionResult> Insert(ProductAddon productAddon)
+        [HttpPost("{token}")]
+        public async Task<ActionResult> Insert(string token,ProductAddon productAddon)
         {
             try
             {
                 await proRepo.InsertProductAddonAsync(productAddon);
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 return Created($"api/ProductAddon{productAddon.ProductID}",productAddon);
             }
             catch (Exception ex)

@@ -64,15 +64,16 @@ namespace ABZProposalWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost]
-        public async Task<ActionResult> Insert(Proposal proposal)
+        [HttpPost("{token}")]
+        public async Task<ActionResult> Insert(string token, Proposal proposal)
         {
             try
             {
                 await proRepo.InsertProposalAsync(proposal);
                 HttpClient client = new HttpClient();
-                //await client.PostAsJsonAsync("http://localhost:5007/api/policy/proposal", new { proposalno = proposal.ProposalNo });
-             await client.PostAsJsonAsync("http://abzpolicywebapi-akshitha.azurewebsites.net/api/policy/Proposal", new { ProposalNo = proposal.ProposalNo });
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                await client.PostAsJsonAsync("http://localhost:5007/api/policy/proposal", new { proposalno = proposal.ProposalNo });
+            // await client.PostAsJsonAsync("http://abzpolicywebapi-akshitha.azurewebsites.net/api/policy/Proposal", new { ProposalNo = proposal.ProposalNo });
 
                 return Created($"api/Proposal/{proposal.ProposalNo}",proposal);
             }

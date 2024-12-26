@@ -2,15 +2,25 @@
 using ABZVehicleInsuranceMvcProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     public class PolicyAddonController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/PolicyAddon/") };
+        static string token;
         // GET: PolicyAddonController
         public async Task<ActionResult> Index( string pid)
         {
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "My name is Bond, James Bond the great";
+            HttpClient client2 = new HttpClient();
+            //token = await client2.GetStringAsync("https://authenticationwebapi-snrao.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("" + pid);
             return View(policyAddons);
         }
@@ -25,6 +35,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: PolicyAddonController/Create
         public ActionResult Create()
         {
+            ViewData["token"] = token;
             PolicyAddon policyAddon = new PolicyAddon();
             return View(policyAddon);
         }
@@ -36,7 +47,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<PolicyAddon>("", policyaddon);
+                await client.PostAsJsonAsync<PolicyAddon>(""+token, policyaddon);
                 return RedirectToAction(nameof(Index));
             }
             catch

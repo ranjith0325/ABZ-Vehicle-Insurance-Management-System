@@ -47,7 +47,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<Customer>("", customer);
+                await client.PostAsJsonAsync<Customer>(""+token, customer);
                 return RedirectToAction(nameof(Index));
             }
             catch
