@@ -8,7 +8,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ABZCustomerQueryLibrary.Repo
 {
-    public interface IQueryResponse
+    public interface IQueryResponseRepoAsync
     {
         Task InsertQueryResponseAsync(QueryResponse queryresponse);
         Task DeleteQueryResponseAsync(string queryID,string srNo);
