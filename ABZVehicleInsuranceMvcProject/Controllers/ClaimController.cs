@@ -9,7 +9,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     public class ClaimController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-akshitha.azurewebsites.net/api/claim/") };
         static string token;
 
         public async Task<ActionResult> Index()
@@ -18,8 +18,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            //token = await client2.GetStringAsync("https://authenticationwebapi-snrao.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             // GET: ClaimController
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
