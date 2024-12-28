@@ -5,7 +5,7 @@ using Microsoft.Identity.Client;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
-    public class QueryReponseController : Controller
+    public class QueryResponseController : Controller
     {
         // GET: QueryReponseController
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/QueryResponse/") };
