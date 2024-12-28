@@ -1,7 +1,11 @@
-﻿namespace ABZVehicleInsuranceMvcProject.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ABZVehicleInsuranceMvcProject.Models
 {
     public class CustomerQuery
     {
+        [RegularExpression(@"\w{10}", ErrorMessage = "Phone no must be 10 digits")]
+
         public string QueryID { get; set; } = null!;
 
         public string CustomerID { get; set; } = null!;
