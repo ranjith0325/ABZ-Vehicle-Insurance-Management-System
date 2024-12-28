@@ -4,7 +4,7 @@ namespace ABZVehicleInsuranceMvcProject.Models
 {
     public class CustomerQuery
     {
-        [RegularExpression(@"\w{10}", ErrorMessage = "Phone no must be 10 digits")]
+        [RegularExpression(@"\w{10}", ErrorMessage = "QueryID must be 10 digits")]
 
         public string QueryID { get; set; } = null!;
 
