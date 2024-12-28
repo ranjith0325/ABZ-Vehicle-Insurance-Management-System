@@ -4,7 +4,7 @@ namespace ABZVehicleInsuranceMvcProject.Models
 {
     public class Proposal
     {
-        [RegularExpression(@"\d{10}", ErrorMessage = "Proposal Number must be 10 characters")]
+        [RegularExpression(@"\w{10}", ErrorMessage = "Proposal Number must be 10 characters")]
 
         public string ProposalNo { get; set; } = null!;
         [Required]
