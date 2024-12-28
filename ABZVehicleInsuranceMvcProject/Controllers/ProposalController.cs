@@ -7,7 +7,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     public class ProposalController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5273/api/proposal/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproposalwebapi-akshitha.azurewebsites.net/api/proposal/") };
         static string token;
 
         // GET: ProposalMvcController
@@ -17,8 +17,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            //token = await client2.GetStringAsync("https://authenticationwebapi-snrao.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Proposal> proposals = await client.GetFromJsonAsync<List<Proposal>>("");
             return View(proposals);
