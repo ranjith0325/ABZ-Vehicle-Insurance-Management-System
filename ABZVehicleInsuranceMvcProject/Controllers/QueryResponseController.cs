@@ -8,7 +8,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     public class QueryResponseController : Controller
     {
         // GET: QueryReponseController
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/QueryResponse/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/api/QueryResponse/") };
        // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/QueryResponse/") };
         static string token;
 
