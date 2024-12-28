@@ -15,7 +15,7 @@ public partial class CustomerQuery
 
     public string? Status { get; set; }
 
-    public virtual Customer Customer { get; set; } = null!;
+    public virtual Customer? Customer { get; set; } = null!;
 
     public virtual ICollection<QueryResponse> QueryResponses { get; set; } = new List<QueryResponse>();
 }

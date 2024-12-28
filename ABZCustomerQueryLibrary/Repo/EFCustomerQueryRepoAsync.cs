@@ -20,7 +20,7 @@ namespace ABZCustomerQueryLibrary.Repo
 
         public async Task<List<CustomerQuery>> GetAllCustomerQuerysAsync()
         {
-            List<CustomerQuery> customerQueries = await ctx.CustomerQueries.ToListAsync();  
+            List<CustomerQuery> customerQueries = await ctx.CustomerQueries.ToListAsync();
             return customerQueries;
         }
 
@@ -38,6 +38,26 @@ namespace ABZCustomerQueryLibrary.Repo
             }
         }
 
+        public async Task<List<CustomerQuery>> GetCustomerQueryByCustomerAsync(string customerID)
+        {
+
+            List<CustomerQuery> customerQueries = await (from pa in ctx.CustomerQueries where pa.CustomerID == customerID select pa).ToListAsync();
+            if (customerQueries.Count == 0)
+            {
+                throw new Exception("No such Customer");
+            }
+            else
+            {
+                return customerQueries;
+            }
+        }
+
+        public async Task InsertCustomerAsync(Customer customer)
+        {
+            await ctx.Customers.AddAsync(customer);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task InsertCustomerQueryAsync(CustomerQuery customerQuery)
         {
             await ctx.CustomerQueries.AddAsync(customerQuery);
@@ -50,6 +70,7 @@ namespace ABZCustomerQueryLibrary.Repo
             c1.QueryDate = customerQuery.QueryDate;
             c1.Description = customerQuery.Description;
             c1.Status = customerQuery.Status;
+            await ctx.SaveChangesAsync();
         }
     }
 }

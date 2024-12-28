@@ -14,5 +14,7 @@ namespace ABZCustomerQueryLibrary.Repo
         Task UpdateCustomerQueryAsync(string queryID, CustomerQuery customerQuery);
         Task<List<CustomerQuery>> GetAllCustomerQuerysAsync();
         Task<CustomerQuery> GetCustomerQueryAsync(string queryID);
+        Task<List<CustomerQuery>> GetCustomerQueryByCustomerAsync(string customerID);
+        Task InsertCustomerAsync(Customer customer);
     }
 }

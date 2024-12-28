@@ -96,9 +96,6 @@ namespace ABZProductWebApi.Controllers
                 return NotFound();
             }
         }
-        
-
-
-
-        }
+       
+    }
 }
