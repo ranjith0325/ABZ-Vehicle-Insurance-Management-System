@@ -33,20 +33,21 @@ namespace ABZCustomerQueryWebApi
                     Scheme = "bearer",
                     BearerFormat = "JWT"
                 });
+
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                 {
-                      {
-                            new OpenApiSecurityScheme
-                             {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = "Bearer"
-                                }
-                             },
-                             new List<string>() { }
-                       }
-                 });
+  {
+      {
+          new OpenApiSecurityScheme
+          {
+              Reference = new OpenApiReference
+              {
+                  Type = ReferenceType.SecurityScheme,
+                  Id = "Bearer"
+              }
+          },
+          new List<string>() { }
+  }
+});
             });
             builder.Services.AddScoped<ICustomerQueryRepoAsync, EFCustomerQueryRepoAsync>();
             builder.Services.AddScoped<IQueryResponseRepoAsync, EFQueryResponseRepoAsync>();
@@ -69,34 +70,7 @@ namespace ABZCustomerQueryWebApi
                 };
             });
             //builder.Services.AddSwaggerGen();
-            builder.Services.AddSwaggerGen(c =>
-            {
-                //c.OperationFilter<AuthorizationHeaderParameterOperationFilter>();
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Name = "Authorization",
-                    Description = "JWT Authorization header using the Bearer scheme.",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
-                    BearerFormat = "JWT"
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-  {
-      {
-          new OpenApiSecurityScheme
-          {
-              Reference = new OpenApiReference
-              {
-                  Type = ReferenceType.SecurityScheme,
-                  Id = "Bearer"
-              }
-          },
-          new List<string>() { }
-  }
-});
-            });
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
