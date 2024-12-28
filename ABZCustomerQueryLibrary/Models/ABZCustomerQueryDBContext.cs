@@ -55,7 +55,7 @@ public partial class ABZCustomerQueryDBContext : DbContext
 
         modelBuilder.Entity<CustomerQuery>(entity =>
         {
-            entity.HasKey(e => e.QueryID).HasName("PK__Customer__5967F7FBB6FAF730");
+            entity.HasKey(e => e.QueryID).HasName("PK__Customer__5967F7FB9FC23368");
 
             entity.ToTable("CustomerQuery");
 
@@ -79,7 +79,7 @@ public partial class ABZCustomerQueryDBContext : DbContext
             entity.HasOne(d => d.Customer).WithMany(p => p.CustomerQueries)
                 .HasForeignKey(d => d.CustomerID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CustomerQ__Custo__2A4B4B5E");
+                .HasConstraintName("FK__CustomerQ__Custo__30F848ED");
         });
 
         modelBuilder.Entity<QueryResponse>(entity =>
@@ -112,7 +112,7 @@ public partial class ABZCustomerQueryDBContext : DbContext
             entity.HasOne(d => d.Query).WithMany(p => p.QueryResponses)
                 .HasForeignKey(d => d.QueryID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__QueryResp__Query__2B3F6F97");
+                .HasConstraintName("FK__QueryResp__Query__31EC6D26");
         });
 
         OnModelCreatingPartial(modelBuilder);

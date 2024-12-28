@@ -4,6 +4,6 @@
 	SrNo CHAR(10),
 	AgentID CHAR(10) references Agent(AgentID),
 	Description VARCHAR(100),
-	ResponseDate DATETIME
+	ResponseDate DATETIME,
 	PRIMARY KEY(QueryID,SrNo)
 )
