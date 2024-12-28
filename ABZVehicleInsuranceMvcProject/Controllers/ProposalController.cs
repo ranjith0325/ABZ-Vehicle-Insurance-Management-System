@@ -59,6 +59,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [Route("Proposal/Edit/{proposalNo}")]
         public async Task<ActionResult> Edit(string proposalNo)
         {
+            ViewData["token"] = token;
             Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalNo);
             return View(proposal);
         }
