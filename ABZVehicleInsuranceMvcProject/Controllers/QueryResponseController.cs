@@ -9,7 +9,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     {
         // GET: QueryReponseController
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/QueryResponse/") };
-        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/QueryResponse/") };
+       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/QueryResponse/") };
         static string token;
 
         public async Task<ActionResult> Index()
@@ -19,7 +19,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
             token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            //token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+         //   token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("");

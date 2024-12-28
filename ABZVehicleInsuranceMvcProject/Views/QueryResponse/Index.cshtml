@@ -52,7 +52,8 @@
                     @Html.ActionLink("Edit", "Edit", new { queryID = item.QueryID, srNo = item.SrNo }) |
                     @Html.ActionLink("Details", "Details", new { queryID = item.QueryID, srNo = item.SrNo }) |
                     @Html.ActionLink("Delete", "Delete", new { queryID = item.QueryID, srNo = item.SrNo })|
-                    @Html.ActionLink("ByCustomerQuery", "ByCustomerQuery", new { queryID = item.QueryID, srNo = item.SrNo })
+                    @Html.ActionLink("ByCustomerQuery", "ByCustomerQuery", new { queryID = item.QueryID })|
+                    @Html.ActionLink("ByAgent", "ByAgent", new { agentID=item.AgentID })
             </td>
         </tr>
 }
