@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table table-hover table-responsive">
     <thead>
@@ -63,7 +63,7 @@
             <td>
                     @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" }) |
                     @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }, new { @class = "btn btn-success" }) |
-                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }, new { @class = "btn btn-delete" }) |
+                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }, new { @class = "btn btn-danger" }) |
                     @Html.ActionLink("Add-on", "index", "PolicyAddon", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" })
             </td>
         </tr>

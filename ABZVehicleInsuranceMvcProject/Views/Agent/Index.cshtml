@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table table-hover table-responsive">
     <thead>
@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.LicenseCode)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { agentId=item.AgentID }, new {@class ="btn btn-primary"}) |
-                    @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "btn btn-success" }) |
-                    @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "Edit", new { agentId=item.AgentID }, new {@class ="btn btn-primary",style = "width: 60px; height: 35px;"}) |
+                    @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "btn btn-success",style = "width: 75px; height: 35px;" }) |
+                    @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "btn btn-danger",style = "width: 60px; height: 35px;" })
             </td>
         </tr>
 }
