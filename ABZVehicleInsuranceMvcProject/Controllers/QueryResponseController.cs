@@ -47,6 +47,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             try
             {
                 await client.PostAsJsonAsync<QueryResponse>("", queryresponse);
+                TempData["AlertMessage"] = "Created Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -72,6 +73,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             try
             {
                 await client.PutAsJsonAsync<QueryResponse>($"{queryID}/{srNo}", qr);
+                TempData["AlertMessage"] = "Edited Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -97,6 +99,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             try
             {
                 await client.DeleteAsync($"{queryID}/{srNo}");
+                TempData["AlertMessage"] = "Deleted Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
             catch
