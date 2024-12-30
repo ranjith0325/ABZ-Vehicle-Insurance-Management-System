@@ -37,7 +37,7 @@ body {
     position: relative;
     top: 10px; /* Adjust the vertical position if needed */
 }
-body, html {
+/*body, html {
     margin: 0;
     padding: 0;
     height: 100%;
