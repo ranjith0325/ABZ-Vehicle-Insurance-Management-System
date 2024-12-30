@@ -5,6 +5,27 @@
 }
 
 <h1>Index</h1>
+@if (TempData["AlertMessage"] != null)
+{
+
+
+    <div id="alertMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success  !</strong>    @TempData["AlertMessage"]
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+           $(document).ready(function() {
+        var alertMessage = $("#alertMessage");
+
+        if (alertMessage.length > 0) {
+            // Hide the alert after 3 seconds with a fade-out effect
+            setTimeout(function() {
+                alertMessage.fadeOut(); // This will fade out the alert
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    });
+</script>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New</a>
@@ -61,9 +82,28 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" }) |
+                    @* @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" }) |
                     @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }, new { @class = "btn btn-success" }) |
-                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }, new { @class = "btn btn-danger" }) |*@
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li>
+                            @* <li>
+                                @Html.ActionLink("Add-on", "index", "PolicyAddon", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li> *@
+                        </ul>
+                    </div>
                     @Html.ActionLink("Add-on", "index", "PolicyAddon", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" })
             </td>
         </tr>
