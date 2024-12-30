@@ -35,7 +35,7 @@ body {
     position: relative;
     top: 10px; /* Adjust the vertical position if needed */
 }
-body, html {
+/*body, html {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -47,11 +47,11 @@ body, html {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 60px); /* Adjust 60px to match the height of your navbar */
-    background: url('/images/IMG_3619_enhanced.JPG') no-repeat center center;
+    height: calc(100vh - 60px);*/ /* Adjust 60px to match the height of your navbar */
+    /*background: url('/images/IMG_3619_enhanced.JPG') no-repeat center center;
     background-size: cover;
-    z-index: -1; /* Ensure the image stays behind other content */
-}
+    z-index: -1;*/ /* Ensure the image stays behind other content */
+/*}*/
 
 .navbar {
     z-index: 1;
