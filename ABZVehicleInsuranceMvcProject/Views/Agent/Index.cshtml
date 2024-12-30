@@ -5,7 +5,27 @@
 }
 
 <h1>Index</h1>
+@if (TempData["AlertMessage"] != null)
+{
 
+
+    <div id="alertMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success  !</strong>    @TempData["AlertMessage"]
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+           $(document).ready(function() {
+        var alertMessage = $("#alertMessage");
+
+        if (alertMessage.length > 0) {
+            // Hide the alert after 3 seconds with a fade-out effect
+            setTimeout(function() {
+                alertMessage.fadeOut(); // This will fade out the alert
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    });
+</script>
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
@@ -48,11 +68,27 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LicenseCode)
             </td>
-            <td>
+           @*  <td>
                     @Html.ActionLink("Edit", "Edit", new { agentId=item.AgentID }, new {@class ="btn btn-primary",style = "width: 60px; height: 35px;"}) |
                     @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "btn btn-success",style = "width: 75px; height: 35px;" }) |
                     @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "btn btn-danger",style = "width: 60px; height: 35px;" })
-            </td>
+            </td> *@
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Actions
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            @Html.ActionLink("Edit", "Edit", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
+                        </li>
+                    </ul>
+                </div>
         </tr>
 }
     </tbody>
