@@ -73,22 +73,24 @@
                     @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "btn btn-success",style = "width: 75px; height: 35px;" }) |
                     @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "btn btn-danger",style = "width: 60px; height: 35px;" })
             </td> *@
-                <div class="dropdown">
-                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        Actions
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li>
-                            @Html.ActionLink("Edit", "Edit", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
-                        </li>
-                    </ul>
-                </div>
+				 <td>
+					<div class="dropdown">
+						<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+							Actions
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<li>
+								@Html.ActionLink("Edit", "Edit", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
+							</li>
+							<li>
+								@Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
+							</li>
+							<li>
+								@Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "dropdown-item" })
+							</li>
+						</ul>
+					</div>
+			     </td> 
         </tr>
 }
     </tbody>
