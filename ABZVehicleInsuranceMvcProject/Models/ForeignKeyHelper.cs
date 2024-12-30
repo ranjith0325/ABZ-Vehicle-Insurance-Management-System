@@ -86,5 +86,6 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return proposalNos;
         }
+        
     }
 }

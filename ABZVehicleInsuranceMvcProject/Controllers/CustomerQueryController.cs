@@ -7,7 +7,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     public class CustomerQueryController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/CustomerQuery/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/api/CustomerQuery/") };
         //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/CustomerQuery/") };
         static string token;
         // GET: CustomerQueryController
@@ -18,7 +18,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
             token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            //token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<CustomerQuery> cqs = await client.GetFromJsonAsync<List<CustomerQuery>>("");
@@ -109,5 +109,6 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             List<CustomerQuery> customerQueries = await client.GetFromJsonAsync<List<CustomerQuery>>("ByCustomer/" + customerID);
             return View(customerQueries);
         }
+      
     }
 }

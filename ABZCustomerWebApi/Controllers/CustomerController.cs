@@ -46,10 +46,11 @@ namespace ABZCustomerWebApi.Controllers
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                // await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer", new {CustomerID=customer.CustomerID});
-               // await client.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer",new { CustomerID = customer.CustomerID });
-                await client.PostAsJsonAsync("http://abzvehiclewebapi-akshitha.azurewebsites.net/api/Vehicle/Customer", new { CustomerId = customer.CustomerID });
-                await client.PostAsJsonAsync("http://abzproposalwebapi-akshitha.azurewebsites.net/api/Proposal/Customer", new { CustomerId = customer.CustomerID });
-                await client.PostAsJsonAsync("http://abzcustomerquerywebapi.azurewebsites.net/api/CustomerQuery/Customer", new { CustomerId = customer.CustomerID });
+              //  await client.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer",new { CustomerID = customer.CustomerID });
+              //  await client.PostAsJsonAsync("http://localhost:5091/api/CustomerQuery/Customer", new { CustomerID = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzvehiclewebapi-akshitha.azurewebsites.net/api/Vehicle/Customer", new { CustomerID = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzproposalwebapi-akshitha.azurewebsites.net/api/Proposal/Customer", new { CustomerID = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzcustomerquerywebapi-akshitha.azurewebsites.net/api/CustomerQuery/Customer", new { CustomerID = customer.CustomerID });
 
 
                 return Created($"api/Customer/{customer.CustomerID}", customer);

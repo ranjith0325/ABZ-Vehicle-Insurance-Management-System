@@ -8,6 +8,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     public class ProposalController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproposalwebapi-akshitha.azurewebsites.net/api/proposal/") };
+       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5273/api/Proposal/") };
         static string token;
 
         // GET: ProposalMvcController

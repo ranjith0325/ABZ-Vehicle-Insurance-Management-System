@@ -9,6 +9,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     {
         // GET: ProductAddonController
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproductwebapi-akshitha.azurewebsites.net/api/productaddon/") };
+       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/ProductAddon/") };
         static string token;
         public async Task<ActionResult> Index(string pid)
         {
