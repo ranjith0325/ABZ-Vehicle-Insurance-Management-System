@@ -19,14 +19,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 60px); /* Adjust 60px to match the height of your navbar */
-    background: url('/images/IMG_3619_enhanced.JPG') no-repeat;
-    background-size: cover;
-    z-index: -1; /* Ensure the image stays behind other content */
+   
 }
 /*added from here*/
 .navbar {
@@ -50,9 +43,7 @@ body {
     height: 100%;
     overflow: hidden;
 }
-/*
-.fullscreen-image {
-    
-}*/
+
 .navbar {
     z-index: 1;
+}
