@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.LicenseCode)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { agentId=item.AgentID }, new {@class ="btn btn-primary"}) |
-                    @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "btn btn-success" }) |
-                    @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "Edit", new { agentId=item.AgentID }, new {@class ="btn btn-primary",style = "width: 120px; height: 40px;"}) |
+                    @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }, new { @class = "btn btn-success",style = "width: 120px; height: 40px;" }) |
+                    @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID }, new { @class = "btn btn-danger",style = "width: 120px; height: 40px;" })
             </td>
         </tr>
 }
