@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-hover table-responsive">
     <thead>
         <tr>
             <th>
@@ -91,10 +91,10 @@
                 @Html.DisplayFor(modelItem => item.ClaimStatus)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { claimNo=item.ClaimNo }) |
-                    @Html.ActionLink("Details", "Details", new { claimNo = item.ClaimNo }) |
-                    @Html.ActionLink("ByPolicy", "ByPolicy", new { policyNo = item.PolicyNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { claimNo = item.ClaimNo })
+                    @Html.ActionLink("Edit", "Edit", new { claimNo = item.ClaimNo }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { claimNo = item.ClaimNo }, new { @class ="btn btn-success"}) |
+                    @Html.ActionLink("Delete", "Delete", new { claimNo = item.ClaimNo }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("ByPolicy", "ByPolicy", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" }) |
             </td>
         </tr>
 }
