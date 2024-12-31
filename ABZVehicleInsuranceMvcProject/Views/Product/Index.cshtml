@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ABZVehicleInsuranceMvcProject.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
@@ -9,99 +9,103 @@
 {
 
 
-    <div id="alertMessage" class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success  !</strong>    @TempData["AlertMessage"]
-    </div>
+	<div id="alertMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>Success  !</strong>    @TempData["AlertMessage"]
+	</div>
 }
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-           $(document).ready(function() {
-        var alertMessage = $("#alertMessage");
+		   $(document).ready(function() {
+		var alertMessage = $("#alertMessage");
 
-        if (alertMessage.length > 0) {
-            // Hide the alert after 3 seconds with a fade-out effect
-            setTimeout(function() {
-                alertMessage.fadeOut(); // This will fade out the alert
-            }, 3000); // 3000 milliseconds = 3 seconds
-        }
-    });
+		if (alertMessage.length > 0) {
+			// Hide the alert after 3 seconds with a fade-out effect
+			setTimeout(function() {
+				alertMessage.fadeOut(); // This will fade out the alert
+			}, 3000); // 3000 milliseconds = 3 seconds
+		}
+	});
 </script>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+	<a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table table-hover table-responsive">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductUIN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InsuredInterests)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PolicyCoverage)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductUIN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InsuredInterests)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PolicyCoverage)
-            </td>
-            <td>
-                   @*  @Html.ActionLink("Edit", "Edit", new { productId = item.ProductID }, new { @class = "btn btn-primary" }) |
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.ProductID)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ProductName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ProductDescription)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ProductUIN)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.InsuredInterests)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.PolicyCoverage)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProductID)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProductName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProductDescription)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProductUIN)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.InsuredInterests)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PolicyCoverage)
+				</td>
+				<td>
+					@*  @Html.ActionLink("Edit", "Edit", new { productId = item.ProductID }, new { @class = "btn btn-primary" }) |
                     @Html.ActionLink("Details", "Details", new { productId = item.ProductID }, new { @class = "btn btn-success" }) |
                     @Html.ActionLink("Delete", "Delete", new { productId = item.ProductID }, new { @class = "btn btn-danger" })|
                    *@
-                    <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Actions
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li>
-                                @Html.ActionLink("Edit", "Edit", new { productId = item.ProductID }, new { @class = "dropdown-item" })
-                            </li>
-                            <li>
-                                @Html.ActionLink("Details", "Details", new { productId = item.ProductID }, new { @class = "dropdown-item" })
-                            </li>
-                            <li>
-                                @Html.ActionLink("Delete", "Delete", new { productId = item.ProductID }, new { @class = "dropdown-item" })
-                            </li>
-                            @* <li>
+					@* <div class="d-flex align-items-center">
+						<div class="dropdown me-2"> *@
+					<div class="dropdown">
+						<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+							Actions
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<li>
+								@Html.ActionLink("Edit", "Edit", new { productId = item.ProductID }, new { @class = "dropdown-item" })
+							</li>
+							<li>
+								@Html.ActionLink("Details", "Details", new { productId = item.ProductID }, new { @class = "dropdown-item" })
+							</li>
+							<li>
+								@Html.ActionLink("Delete", "Delete", new { productId = item.ProductID }, new { @class = "dropdown-item" })
+							</li>
+							<li>
                                 @Html.ActionLink("Add-on", "Index", "ProductAddon", new { productId = item.ProductID }, new { @class = "dropdown-item" })
-                            </li> *@
-                        </ul>
-                    </div>
-                    @Html.ActionLink("Add-on", "Index", "ProductAddon", new { productId = item.ProductID }, new { @class = "btn btn-primary" })
-            </td>
-        </tr>
-}
-    </tbody>
+                            </li>
+						</ul>
+						@* </div>
+						@Html.ActionLink("Add-on", "Index", "ProductAddon", new { productId = item.ProductID }, new { @class = "btn btn-primary" })
+					</div> *@
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
