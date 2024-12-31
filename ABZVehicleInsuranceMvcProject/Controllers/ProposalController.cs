@@ -33,6 +33,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: ProposalMvcController/Create
+        
         public ActionResult Create()
         {
             ViewData["token"] = token;
