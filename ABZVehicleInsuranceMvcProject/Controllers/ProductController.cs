@@ -5,10 +5,11 @@ using ABZVehicleInsuranceMvcProject.Controllers;
 using System.Security.Cryptography;
 using System.Net.Http.Json;
 using NuGet.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
-
+    [Authorize]
     public class ProductController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproductwebapi-akshitha.azurewebsites.net/api/product/") };
