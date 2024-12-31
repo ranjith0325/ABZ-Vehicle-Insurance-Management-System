@@ -36,6 +36,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: PolicyAddonController/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewData["token"] = token;
@@ -46,6 +47,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: PolicyAddonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(PolicyAddon policyaddon)
         {
             try
@@ -62,6 +64,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: PolicyAddonController/Edit/5
         [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string policyNo, string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
@@ -72,6 +75,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string policyNo,string addonId, PolicyAddon policyaddon)
         {
             try
@@ -88,6 +92,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: PolicyAddonController/Delete/5
         [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string policyNo, string addonId)
         {
             PolicyAddon policyaddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
@@ -98,6 +103,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string policyNo, string addonId, IFormCollection collection)
         {
             try

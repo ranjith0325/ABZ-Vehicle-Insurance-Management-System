@@ -37,6 +37,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: PolicyController/Create
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             ViewData["token"] = token;
@@ -47,6 +48,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: PolicyController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(Policy policy)
         {
             try
@@ -63,6 +65,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: PolicyController/Edit/5
         [Route("Policy/Edit/{policyNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string policyNo)
         {
             ViewData["token"] = token;
@@ -74,6 +77,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Policy/Edit/{policyNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string policyNo, Policy policy)
         {
             try
@@ -90,6 +94,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: PolicyController/Delete/5
         [Route("Policy/Delete/{policyNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string policyNo)
         {
             Policy policy = await client.GetFromJsonAsync<Policy>("" + policyNo);
@@ -100,6 +105,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Policy/Delete/{policyNo}")]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult> Delete(string policyNo, IFormCollection collection)
         {
             try
