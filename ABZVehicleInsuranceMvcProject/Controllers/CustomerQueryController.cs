@@ -14,7 +14,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/CustomerQuery/") };
         static string token;
         // GET: CustomerQueryController
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string selectedQueryStatus)
         {
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
@@ -25,6 +25,17 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<CustomerQuery> cqs = await client.GetFromJsonAsync<List<CustomerQuery>>("");
+            ViewBag.FuelTypes = new List<SelectListItem>
+ {
+     new SelectListItem { Text = "Active", Value = "A" },
+     new SelectListItem { Text = "Responded", Value = "R" }
+ };
+
+            // Filter vehicles based on fuel type
+            if (!string.IsNullOrEmpty(selectedQueryStatus))
+            {
+                cqs = cqs.Where(v => v.Status == selectedQueryStatus).ToList();
+            }
             return View(cqs);
         }
 

@@ -29,6 +29,35 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
+<div>
+    @using (Html.BeginForm("Index", "Agent", FormMethod.Get))
+    {
+        <table>
+            <tr>
+                <td>
+                    <span><b>Search By: </b></span>
+                    @Html.RadioButton("searchBy", "AgentName", true)
+                    <text>Agent Name</text>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("searchValue", null, new { @class = "form-control", placeholder = "Enter Agent name" })
+                </td>
+                <td>
+                    <input type="submit" value="Search" class="btn btn-outline-success" />
+                </td>
+            </tr>
+        </table>
+
+    }
+</div>
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["InfoMessage"]
+    </div>
+}
 <table class="table table-hover table-responsive">
     <thead>
         <tr>

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Buffers;
+using System.Data;
 using ABZVehicleInsuranceMvcProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
        // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
         static string token;
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchBy,string searchValue)
         {
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
@@ -25,6 +26,29 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("");
+            if (string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(searchValue))
+            {
+                return View(agents);
+            }
+
+            // Initialize search results
+            IEnumerable<Agent> searchResults = null;
+
+            // Search by AgentName
+            if (searchBy.ToLower() == "agentname")
+            {
+                searchResults = agents.Where(a => a.AgentName != null && a.AgentName.ToLower().Contains(searchValue.ToLower())).ToList();
+            }
+
+            if (searchResults != null && searchResults.Any())
+            {
+                return View(searchResults); // Return filtered results
+            }
+            else
+            {
+                TempData["InfoMessage"] = "No matching agents found.";
+                return View(agents); // Return all agents if no match is found
+            }
             return View(agents);
         }
 
