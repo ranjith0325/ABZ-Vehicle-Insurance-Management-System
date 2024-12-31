@@ -35,7 +35,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: ProposalMvcController/Create
-        
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewData["token"] = token;
@@ -46,6 +46,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: ProposalMvcController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(Proposal proposal)
         {
             try
@@ -62,6 +63,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: ProposalMvcController/Edit/5
         [Route("Proposal/Edit/{proposalNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string proposalNo)
         {
             ViewData["token"] = token;
@@ -73,6 +75,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Proposal/Edit/{proposalNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string proposalNo, Proposal proposal)
         {
             try
@@ -89,6 +92,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: ProposalMvcController/Delete/5
         [Route("Proposal/Delete/{proposalNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string proposalNo)
         {
             Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalNo);
@@ -99,6 +103,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Proposal/Delete/{proposalNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string proposalNo, IFormCollection collection)
         {
             try
