@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Net.Http.Json;
 using NuGet.Common;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
@@ -46,6 +47,14 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         public ActionResult Create()
         {
             ViewData["token"] = token;
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+ {
+     new SelectListItem { Text = "Private car", Value = "PRIVATE CAR" },
+     new SelectListItem { Text = "Public car", Value = "PUBLIC CAR" }
+  };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
             Product product = new Product();
             return View(product);
         }

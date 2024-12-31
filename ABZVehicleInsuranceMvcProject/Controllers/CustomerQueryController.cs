@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Client;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
@@ -38,6 +39,14 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         public ActionResult Create()
         {
             ViewData["token"] = token;
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+ {
+     new SelectListItem { Text = "Active", Value = "A" },
+     new SelectListItem { Text = "Responded", Value = "R" }
+  };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
             CustomerQuery cq=new CustomerQuery();
             return View(cq);
         }

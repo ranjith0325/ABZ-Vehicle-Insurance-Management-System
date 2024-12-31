@@ -5,6 +5,7 @@ using ABZVehicleInsuranceMvcProject.Models;
 using Claim = ABZVehicleInsuranceMvcProject.Models.Claim;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
@@ -40,6 +41,16 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         public ActionResult Create()
         {
             ViewData["token"] = token;
+                     List<SelectListItem> fuelTypes = new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Submitted", Value = "S" },
+                        new SelectListItem { Text = "Approved", Value = "A" },
+                        new SelectListItem { Text = "Rejected", Value = "R" },
+                        new SelectListItem { Text = "Terminated", Value = "T" }
+                     };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
             Claim claim = new Claim();
             return View(claim);
         }
@@ -47,12 +58,12 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: ClaimController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+
         public async Task<ActionResult> Create(Claim claim)
         {
             try
             {
-                await client.PostAsJsonAsync<Claim>(""+token, claim);
+                await client.PostAsJsonAsync<Claim>("" + token, claim);
                 TempData["AlertMessage"] = "Created Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
@@ -74,7 +85,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Claim/Edit/{claimNo}")]
-        public async Task<ActionResult> Edit(string claimNo,Claim claim)
+        public async Task<ActionResult> Edit(string claimNo, Claim claim)
         {
             try
             {
@@ -91,7 +102,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController/Delete/5
         public async Task<ActionResult> Delete(string claimNo)
         {
-            Claim claim=await client.GetFromJsonAsync<Claim>(""+claimNo);
+            Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
             return View(claim);
         }
 
@@ -103,7 +114,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.DeleteAsync(""+claimNo);
+                await client.DeleteAsync("" + claimNo);
                 TempData["AlertMessage"] = "Deleted Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
@@ -114,7 +125,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
         public async Task<ActionResult> ByPolicy(string policyNo)
         {
-            List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/"+policyNo);
+            List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/" + policyNo);
             return View(claims);
         }
 
