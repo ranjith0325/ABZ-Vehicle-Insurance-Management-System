@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMvcProject.Models;
 using Claim = ABZVehicleInsuranceMvcProject.Models.Claim;
 using System.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
+    [Authorize]
     public class ClaimController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-akshitha.azurewebsites.net/api/claim/") };

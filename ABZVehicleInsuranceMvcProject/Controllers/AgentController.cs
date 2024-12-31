@@ -1,10 +1,12 @@
 ﻿using System.Data;
 using ABZVehicleInsuranceMvcProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
+    [Authorize]
     public class AgentController : Controller
     {
         // GET: AgentController

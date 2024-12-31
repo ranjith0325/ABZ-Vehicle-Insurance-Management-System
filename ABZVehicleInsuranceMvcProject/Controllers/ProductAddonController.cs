@@ -1,10 +1,12 @@
 ﻿using ABZVehicleInsuranceMvcProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Common;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
+    [Authorize]
     public class ProductAddonController : Controller
     {
         // GET: ProductAddonController

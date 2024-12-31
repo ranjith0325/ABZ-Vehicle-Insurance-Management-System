@@ -1,0 +1,106 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/Agent/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/AgentSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Customer/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/CustomerSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Product/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/productSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Vehicle/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/VehicleSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Proposal/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/ProposalSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Vehicle/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/ProposalSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Policy/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/PolicySvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Claim/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/ClaimSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Auth/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port":
+                }
+            ],
+            "UpstreamPathTemplate": "/AuthSvc/{something}"
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:5075"
+    }
+}

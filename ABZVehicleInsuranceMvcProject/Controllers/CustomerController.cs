@@ -1,11 +1,13 @@
 ﻿using System.Net.Http.Json;
 using ABZVehicleInsuranceMvcProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Common;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzcustomerwebapi-akshitha.azurewebsites.net/api/customer/") };

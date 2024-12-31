@@ -1,10 +1,12 @@
 ﻿using ABZVehicleInsuranceMvcProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
+    [Authorize]
     public class QueryResponseController : Controller
     {
         // GET: QueryReponseController

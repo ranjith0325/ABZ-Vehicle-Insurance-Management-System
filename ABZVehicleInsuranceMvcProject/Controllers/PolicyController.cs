@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMvcProject.Models;
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
+    [Authorize]
     public class PolicyController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzpolicywebapi-akshitha.azurewebsites.net/api/policy/") };
