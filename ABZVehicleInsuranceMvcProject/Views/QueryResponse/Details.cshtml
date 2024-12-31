@@ -44,5 +44,6 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { queryID=Model.QueryID,srNo=Model.SrNo }) |
-    <a asp-action="Index">Back to List</a>
+    @* <a asp-action="Index">Back to List</a> *@
+    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
 </div>

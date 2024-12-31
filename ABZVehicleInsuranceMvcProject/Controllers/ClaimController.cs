@@ -58,12 +58,12 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: ClaimController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+
         public async Task<ActionResult> Create(Claim claim)
         {
             try
             {
-                await client.PostAsJsonAsync<Claim>(""+token, claim);
+                await client.PostAsJsonAsync<Claim>("" + token, claim);
                 TempData["AlertMessage"] = "Created Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
@@ -105,7 +105,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // GET: ClaimController/Delete/5
         public async Task<ActionResult> Delete(string claimNo)
         {
-            Claim claim=await client.GetFromJsonAsync<Claim>(""+claimNo);
+            Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
             return View(claim);
         }
 
@@ -118,7 +118,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             try
             {
-                await client.DeleteAsync(""+claimNo);
+                await client.DeleteAsync("" + claimNo);
                 TempData["AlertMessage"] = "Deleted Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
@@ -129,7 +129,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
         public async Task<ActionResult> ByPolicy(string policyNo)
         {
-            List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/"+policyNo);
+            List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/" + policyNo);
             return View(claims);
         }
 
