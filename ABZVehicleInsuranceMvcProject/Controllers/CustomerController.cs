@@ -88,7 +88,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: CustomerController/Delete/5
         [Route("Customer/Delete/{customerId}")]
         public async Task<ActionResult> Delete(string customerId)
@@ -96,7 +96,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             Customer customer = await client.GetFromJsonAsync<Customer>("" + customerId);
             return View(customer);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: CustomerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]

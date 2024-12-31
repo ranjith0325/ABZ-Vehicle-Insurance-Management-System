@@ -34,7 +34,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>(""+regNo);
             return View(vehicle);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: VehicleController/Create
         public async Task<ActionResult> Create()
         {
@@ -42,7 +42,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             Vehicle vehicle=new Vehicle();
             return View(vehicle);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: VehicleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -59,7 +59,9 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
+        [Authorize(Roles = "Admin")]
         [Route("Vehicle/Edit/{regNo}")]
+        
         // GET: VehicleController/Edit/5
         public async Task<ActionResult> Edit(string regNo)
         {
@@ -67,11 +69,12 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>(""+regNo);
             return View(vehicle);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: VehicleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Vehicle/Edit/{regNo}")]
+       
         public async Task<ActionResult> Edit(string regNo, Vehicle vehicle)
         {
             try
@@ -85,18 +88,21 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
                 return View();
             }
         }
+        [Authorize(Roles = "Admin")]
         [Route("Vehicle/Delete/{regNo}")]
+       
         // GET: VehicleController/Delete/5
         public async Task<ActionResult> Delete(string regNo)
         {
             Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>("" + regNo);
             return View(vehicle);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: VehicleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Vehicle/Delete/{regNo}")]
+       
         public async Task<ActionResult> Delete(string regNo, IFormCollection collection)
         {
             try
