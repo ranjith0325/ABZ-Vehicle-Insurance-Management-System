@@ -31,9 +31,9 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             List<Product> products = await client.GetFromJsonAsync<List<Product>>("");
             return View(products);
         }
+
+
         
-
-
         // GET: ProductController/Details/5
         public async Task<ActionResult> Details(string productID)
         {
@@ -42,6 +42,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: ProductController/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewData["token"] = token;
@@ -52,7 +53,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(Product product)
         {
             try
@@ -68,6 +69,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
         [Route("Product/Edit/{productID}")]
         // GET: ProductController/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string productID)
         {
             ViewData["token"] = token;
@@ -79,6 +81,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Product/Edit/{productID}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> Edit(string productID, Product product)
         {
             try
@@ -95,16 +99,19 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: ProductController/Delete/5
         [Route("Product/Delete/{productID}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> Delete(string productID)
         {
            Product product = await client.GetFromJsonAsync<Product>("" + productID);
             return View(product);
         }
-
+        [Authorize(Roles ="Admin")]
         // POST: ProductController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Product/Delete/{productID}")]
+
         public async Task<ActionResult> Delete(string productID, IFormCollection collection)
         {
             try
