@@ -11,8 +11,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     [Authorize]
     public class PolicyController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzpolicywebapi-akshitha.azurewebsites.net/api/policy/") };
-        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzpolicywebapi-akshitha.azurewebsites.net/api/policy/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/PolicySvc/") };
         static string token;
 
         // GET: PolicyController
@@ -22,8 +22,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            // token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);           
+            token = await client2.GetStringAsync("http://localhost:5002/AuthSvc/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Policy> policies = await client.GetFromJsonAsync<List<Policy>>("");
@@ -43,12 +43,12 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         {
             ViewData["token"] = token;
             List<SelectListItem> fuelTypes = new List<SelectListItem>
-             {
-                 new SelectListItem { Text = "Cash", Value = "C" },
-                 new SelectListItem { Text = "Cheque", Value = "Q" },
-                 new SelectListItem { Text = "Credit or Debit", Value = "U" },
-                 new SelectListItem { Text = "Digital Payment", Value = "D" }
-              };
+ {
+     new SelectListItem { Text = "Cash", Value = "C" },
+     new SelectListItem { Text = "Cheque", Value = "Q" },
+     new SelectListItem { Text = "Credit or Debit", Value = "U" },
+     new SelectListItem { Text = "Digital Payment", Value = "D" }
+  };
 
             // Passing the fuelTypes list to the View using ViewBag
             ViewBag.FuelTypes = fuelTypes;

@@ -12,8 +12,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     [Authorize]
     public class ClaimController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-akshitha.azurewebsites.net/api/claim/") };
-        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-akshitha.azurewebsites.net/api/claim/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/ClaimSvc/") };
         static string token;
 
         public async Task<ActionResult> Index()
@@ -22,8 +22,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            //token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            //token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5002/AuthSvc/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             // GET: ClaimController
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
@@ -41,13 +41,13 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         public ActionResult Create()
         {
             ViewData["token"] = token;
-                     List<SelectListItem> fuelTypes = new List<SelectListItem>
-                    {
-                        new SelectListItem { Text = "Submitted", Value = "S" },
-                        new SelectListItem { Text = "Approved", Value = "A" },
-                        new SelectListItem { Text = "Rejected", Value = "R" },
-                        new SelectListItem { Text = "Terminated", Value = "T" }
-                     };
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+             {
+                new SelectListItem { Text = "Submitted", Value = "S" },
+                new SelectListItem { Text = "Approved", Value = "A" },
+                new SelectListItem { Text = "Rejected", Value = "R" },
+                new SelectListItem { Text = "Terminated", Value = "T" }
+             };
 
             // Passing the fuelTypes list to the View using ViewBag
             ViewBag.FuelTypes = fuelTypes;
@@ -73,6 +73,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             }
         }
         [Route("Claim/Edit/{claimNo}")]
+        [Authorize(Roles = "Admin")]
         // GET: ClaimController/Edit/5
         public async Task<ActionResult> Edit(string claimNo)
         {
@@ -85,7 +86,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Claim/Edit/{claimNo}")]
-        public async Task<ActionResult> Edit(string claimNo, Claim claim)
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Edit(string claimNo,Claim claim)
         {
             try
             {
@@ -99,6 +101,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             }
         }
         [Route("Claim/Delete/{claimNo}")]
+        [Authorize(Roles = "Admin")]
         // GET: ClaimController/Delete/5
         public async Task<ActionResult> Delete(string claimNo)
         {
@@ -110,6 +113,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Claim/Delete/{claimNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string claimNo, IFormCollection collection)
         {
             try

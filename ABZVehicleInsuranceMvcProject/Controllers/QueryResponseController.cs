@@ -10,8 +10,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     public class QueryResponseController : Controller
     {
         // GET: QueryReponseController
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/api/QueryResponse/") };
-       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/QueryResponse/") };
+       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/api/QueryResponse/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/QueryResponseSvc/") };
         static string token;
 
         public async Task<ActionResult> Index()
@@ -20,8 +20,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-         //   token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5002/AuthSvc/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("");
@@ -33,7 +33,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             QueryResponse query = await client.GetFromJsonAsync<QueryResponse>($"{queryID}/{srNo}");
             return View(query);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             ViewData["token"] = token;
@@ -44,6 +44,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: CustomerQueryController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(QueryResponse queryresponse)
         {
             try
@@ -60,6 +61,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: CustomerQueryController/Edit/5
         [Route("QueryResponse/Edit/{queryID}/{srNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string queryID, string srNo)
         {
             QueryResponse query = await client.GetFromJsonAsync<QueryResponse>($"{queryID}/{srNo}");
@@ -70,6 +72,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("QueryResponse/Edit/{queryID}/{srNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string queryID, string srNo, QueryResponse qr)
         {
             try
@@ -86,6 +89,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: CustomerQueryController/Delete/5
         [Route("QueryResponse/Delete/{queryID}/{srNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string queryID, string srNo)
         {
             QueryResponse query = await client.GetFromJsonAsync<QueryResponse>($"{queryID}/{srNo}");
@@ -96,6 +100,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("QueryResponse/Delete/{queryID}/{srNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string queryID, string srNo, IFormCollection collection)
         {
             try

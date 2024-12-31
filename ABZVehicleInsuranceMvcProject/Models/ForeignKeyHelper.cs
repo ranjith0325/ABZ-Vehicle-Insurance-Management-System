@@ -8,8 +8,8 @@ namespace ABZVehicleInsuranceMvcProject.Models
     {
         public static async Task<List<SelectListItem>> GetCustomerIds(string token)
         {
-           // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
-            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzcustomerwebapi-akshitha.azurewebsites.net/api/customer/") };
+            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/CustomerSvc/") };
+            //HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzcustomerwebapi-akshitha.azurewebsites.net/api/customer/") };
 
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Customer> customers = await client.GetFromJsonAsync<List<Customer>>("");
@@ -22,8 +22,8 @@ namespace ABZVehicleInsuranceMvcProject.Models
         }
         public static async Task<List<SelectListItem>> GetPolicyNos(string token)
         {
-           // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };
-            HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzpolicywebapi-akshitha.azurewebsites.net/api/policy/") };
+            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/PolicySvc/") };
+           // HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzpolicywebapi-akshitha.azurewebsites.net/api/policy/") };
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Policy> policies = await client.GetFromJsonAsync<List<Policy>>("");
             List<SelectListItem> policyNos = new List<SelectListItem>();
@@ -35,9 +35,9 @@ namespace ABZVehicleInsuranceMvcProject.Models
         }
         public static async Task<List<SelectListItem>> GetProductIds(string token)
         {
-        //HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/Product/") };
+            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/ProductSvc/") };
         
-            HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproductwebapi-akshitha.azurewebsites.net/api/product/") };
+           // HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproductwebapi-akshitha.azurewebsites.net/api/product/") };
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Product> products = await client.GetFromJsonAsync<List<Product>>("");
             List<SelectListItem> productIds = new List<SelectListItem>();
@@ -49,8 +49,8 @@ namespace ABZVehicleInsuranceMvcProject.Models
         }
         public static async Task<List<SelectListItem>> GetAgentIds(string token)
         {
-          //  HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
-            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzagentwebapi-akshitha.azurewebsites.net/api/Agent/") };
+            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/AgentSvc/") };
+          //  HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzagentwebapi-akshitha.azurewebsites.net/api/Agent/") };
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("");
             List<SelectListItem> agentIds = new List<SelectListItem>();
@@ -62,8 +62,8 @@ namespace ABZVehicleInsuranceMvcProject.Models
         }
         public static async Task<List<SelectListItem>> GetRegNos(string token)
         {
-           // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5083/api/Vehicle/") };
-            HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzvehiclewebapi-akshitha.azurewebsites.net/api/vehicle/") };
+            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/VehicleSvc/") };
+           // HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzvehiclewebapi-akshitha.azurewebsites.net/api/vehicle/") };
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("");
             List<SelectListItem> regNos = new List<SelectListItem>();
@@ -75,8 +75,8 @@ namespace ABZVehicleInsuranceMvcProject.Models
         }
         public static async Task<List<SelectListItem>> GetProposalNos(string token)
         {
-            // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5273/api/proposal/") };
-            HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproposalwebapi-akshitha.azurewebsites.net/api/proposal/") };
+             HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/ProposalSvc/") };
+            //HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproposalwebapi-akshitha.azurewebsites.net/api/proposal/") };
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Proposal> proposals = await client.GetFromJsonAsync<List<Proposal>>("");
             List<SelectListItem> proposalNos = new List<SelectListItem>();
@@ -86,6 +86,20 @@ namespace ABZVehicleInsuranceMvcProject.Models
             }
             return proposalNos;
         }
-        
+        public static async Task<List<SelectListItem>> GetCustomerQueryIds(string token)
+        {
+            HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/CustomerQuerySvc/") };
+            //HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzcustomerwebapi-akshitha.azurewebsites.net/api/customer/") };
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            List<CustomerQuery> cqs = await client.GetFromJsonAsync<List<CustomerQuery>>("");
+            List<SelectListItem> queryIds = new List<SelectListItem>();
+            foreach (CustomerQuery c in cqs)
+            {
+               queryIds.Add(new SelectListItem { Text = c.QueryID.ToString(), Value = c.QueryID.ToString() });
+           }
+            return queryIds;
+        }
+
     }
 }

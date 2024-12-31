@@ -11,8 +11,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     [Authorize]
     public class CustomerController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzcustomerwebapi-akshitha.azurewebsites.net/api/customer/") };
-        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
+       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://abzcustomerwebapi-akshitha.azurewebsites.net/api/customer/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/CustomerSvc/") };
         static string token;
 
         // GET: CustomerController
@@ -22,8 +22,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-           // token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5002/AuthSvc/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             
             List<Customer> customers = await client.GetFromJsonAsync<List<Customer>>("");

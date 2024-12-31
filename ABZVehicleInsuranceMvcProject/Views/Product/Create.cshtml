@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="InsuredInterests" class="control-label"></label>
-                @* <input asp-for="InsuredInterests" class="form-control" /> *@
+               @* <input asp-for="InsuredInterests" class="form-control" />*@
                 @Html.DropDownListFor(
                          model => model.InsuredInterests,
                          (List<SelectListItem>)ViewBag.FuelTypes,
@@ -56,8 +56,7 @@
 </div>
 
 <div>
-    @* <a asp-action="Index">Back to List</a> *@
-    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

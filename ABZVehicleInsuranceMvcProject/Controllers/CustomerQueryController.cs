@@ -10,32 +10,21 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
     [Authorize]
     public class CustomerQueryController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/api/CustomerQuery/") };
-        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5091/api/CustomerQuery/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzcustomerquerywebapi-akshitha.azurewebsites.net/api/CustomerQuery/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/CustomerQuerySvc/") };
         static string token;
         // GET: CustomerQueryController
-        public async Task<ActionResult> Index(string selectedQueryStatus)
+        public async Task<ActionResult> Index()
         {
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-           // token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            //token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5002/AuthSvc/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<CustomerQuery> cqs = await client.GetFromJsonAsync<List<CustomerQuery>>("");
-            ViewBag.FuelTypes = new List<SelectListItem>
- {
-     new SelectListItem { Text = "Active", Value = "A" },
-     new SelectListItem { Text = "Responded", Value = "R" }
- };
-
-            // Filter vehicles based on fuel type
-            if (!string.IsNullOrEmpty(selectedQueryStatus))
-            {
-                cqs = cqs.Where(v => v.Status == selectedQueryStatus).ToList();
-            }
             return View(cqs);
         }
 
@@ -79,6 +68,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             }
         }
         [Route("CustomerQuery/Edit/{queryID}")]
+        [Authorize(Roles = "Admin")]
         // GET: CustomerQueryController/Edit/5
         public async Task<ActionResult> Edit(string queryID)
         {
@@ -91,6 +81,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("CustomerQuery/Edit/{queryID}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string queryID, CustomerQuery cq)
         {
             try
@@ -105,6 +96,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             }
         }
         [Route("CustomerQuery/Delete/{queryID}")]
+        [Authorize(Roles = "Admin")]
         // GET: CustomerQueryController/Delete/5
         public async Task<ActionResult> Delete(string queryID)
         {
@@ -116,6 +108,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("CustomerQuery/Delete/{queryID}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string queryID, IFormCollection collection)
         {
             try
