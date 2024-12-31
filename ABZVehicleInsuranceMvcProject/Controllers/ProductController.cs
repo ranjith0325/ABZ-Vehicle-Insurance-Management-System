@@ -6,14 +6,15 @@ using System.Security.Cryptography;
 using System.Net.Http.Json;
 using NuGet.Common;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABZVehicleInsuranceMvcProject.Controllers
 {
     [Authorize]
     public class ProductController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproductwebapi-akshitha.azurewebsites.net/api/product/") };
-        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/Product/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproductwebapi-akshitha.azurewebsites.net/api/product/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5002/ProductSvc/") };
         static string token;
 
         // GET: ProductController
@@ -23,8 +24,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            //token = await client2.GetStringAsync("http://localhost:5042/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("https://authenticationwebapi-akshitha.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5002/AuthSvc/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             
 
@@ -46,6 +47,14 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         public ActionResult Create()
         {
             ViewData["token"] = token;
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+ {
+     new SelectListItem { Text = "private car", Value = "private car" },
+     new SelectListItem { Text = "public car", Value = "public car" }
+  };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
             Product product = new Product();
             return View(product);
         }
