@@ -34,6 +34,7 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         }
 
         // GET: ProductAddonController/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewData["token"] = token;
@@ -44,6 +45,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         // POST: ProductAddonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult> Create(ProductAddon productaddon)
         {
             try
@@ -60,6 +63,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [Route("ProductAddon/Edit/{productID}/{addonId}")]
 
         // GET: ProductAddonController/Edit/5
+        [Authorize(Roles = "Admin")]
+
 
         public async Task<ActionResult> Edit(string productID,string addonId)
         {
@@ -71,6 +76,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("ProductAddon/Edit/{productID}/{addonId}")]
+        [Authorize(Roles = "Admin")]
+
 
 
         public async Task<ActionResult> Edit(string productID,string addonId, ProductAddon productaddon)
@@ -89,6 +96,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
 
         // GET: ProductAddonController/Delete/5
         [Route("ProductAddon/Delete/{productID}/{addonId}")]
+        [Authorize(Roles = "Admin")]
+
 
         public async Task<ActionResult> Delete(string productID,string addonId)
         {
@@ -100,6 +109,8 @@ namespace ABZVehicleInsuranceMvcProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("ProductAddon/Delete/{productID}/{addonId}")]
+        [Authorize(Roles = "Admin")]
+
 
         public async Task<ActionResult> Delete(string productID,string addonId, IFormCollection collection)
         {
